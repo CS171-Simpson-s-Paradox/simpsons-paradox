@@ -1,0 +1,14 @@
+
+/* ADD YOUR STYLES HERE */
+body{
+    background-color: lightskyblue;
+    fill: #123456;
+}
+
+h1{
+    text-align: center;
+}
+
+text{
+    font-size: 10px;
+}
