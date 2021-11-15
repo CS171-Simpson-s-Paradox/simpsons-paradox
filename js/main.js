@@ -19,8 +19,6 @@ function loadHistogram(htmlElt, fileName, rowNames, colNames) {
                     vals.push(+data[i][colNames[j]]);
                 }
                 casevals.push(vals);
-
-                console.log(ages);
                 labels.push(ages);
             }
         }
