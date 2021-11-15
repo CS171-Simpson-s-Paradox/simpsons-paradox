@@ -14,25 +14,32 @@
 </head>
 <body>
 
-
-<!--<h1>Simpson's Paradox in Vaccine Effectiveness Estimation</h1>-->
-
 <div id="fullpage" >
 
+
+<!--Opening Page-->
 	<div class="section title">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<h1 id="header">Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
 			</div>
+			<div class="row justify-content-center">
+				<h3 id="header">Ahmed Abukar, Max Cembalest, and Mark Penrod</h3>
+			</div>
 		</div>
-
 	</div>
 
+
+<!--Intro Page: Vaccine Effectiveness-->
 	<div class="section s2">
 		<div class="container-fluid">
+
+<!--			Title-->
 			<div class="section-title">
-				<h1>Calculating Vaccine Effectiveness </h1>
+				<h1>What is Vaccine Effectiveness? </h1>
 			</div>
+
+<!--			Description-->
 			<div class="row justify-content-center">
 				<div class="col-10">
 					<div class="row justify-content-center">
@@ -43,39 +50,170 @@
 							OR: 1 − risk ratio
 							In the first formula, the numerator (risk among unvaccinated − risk among vaccinated) is sometimes called the risk difference or excess risk.
 							Vaccine efficacy/effectiveness is interpreted as the proportionate reduction in disease among the vaccinated group. So a VE of 90% indicates a 90% reduction in disease occurrence among the vaccinated group, or a 90% reduction from the number of cases you would expect if they have not been vaccinated.
+						</p>
+					</div>
+				</div>
+			</div>
+
+<!--			Prevalence Reduction-->
+			<div   class="col justify-content-center">
+				<div   class="row justify-content-center">
+					<p>Walkthrough from New England Journal of Medicine (NEJM) <br>
+				</div>
+				<div   class="row justify-content-center">
+					<div id="prevReduc1" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<svg xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<marker id="arrowhead" markerWidth="4" markerHeight="4"
+					refX="0" refY="2" orient="auto" fill="black">
+				<polygon points="0 0, 4 2, 0 4" />
+			</marker>
+		</defs>
+	</svg>
+
+
+
+
+
+<!--Question: Is There Waning Vaccine Effectiveness?-->
+	<div class="section s2">
+		<div class="container-fluid">
+
+			<!--			Title-->
+			<div class="section-title">
+				<h1>What about this data from Israel? Is there waning efficacy? </h1>
+			</div>
+
+			<!--			Description-->
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>We see a reduction between the vaccinated and unvaccinated cohort.<br>
+							But the reduction is mild - only about a 3x reduction.<br>
+							This translates to a ~65% effectiveness. Oh no!<br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!--			Prevalence Reduction-->
+			<div   class="col justify-content-center">
+				<div   class="row justify-content-center">
+					<p>Prevalence Reduction from August 15th Israel data <br>
+				</div>
+				<div   class="row justify-content-center">
+					<div id="prevReduc2" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+<!--Answer: No waning efficacy if we look at one age group at a time!-->
+	<div class="section s2">
+		<div class="container-fluid">
+
+			<!--			Title-->
+			<div class="section-title">
+				<h1>Efficacy still looks strong within each age group! </h1>
+			</div>
+
+			<!--			Description-->
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>When we pay attention to one age group at a time, the situation looks better.<br>
+							The reduction is now stronger - closer to a 10x reduction.<br>
+							This translates to a ~95% effectiveness. Ah :)<br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!--			Prevalence Reduction-->
+
+			<div   class="row">
+				<div class="col-5">
+					<div id="prevReduc3" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					<div id="prevReduc4" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+<!--Question: Why do the two datasets act differently-->
+	<div class="section s2">
+		<div class="container-fluid">
+
+			<!--			Title-->
+			<div class="section-title">
+				<h1> But notice - splitting by age did not cause this problem with the NEJM data </h1>
+			</div>
+
+			<!--			Description-->
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>What is different between these two scenarios?<br>
+						Splitting by age causes a problem for the Israel data, but not the NEJM data.<br>
+						What causes that difference?<br>
 
 						</p>
 					</div>
 				</div>
 			</div>
+
+			<!--			Prevalence Reduction-->
+			<div   class="row">
+				<div class="col-5">
+					<div id="prevReduc5" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					<div id="prevReduc6" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
+			<div   class="row">
+				<div class="col-5">
+					<div id="prevReduc7" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					<div id="prevReduc8" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
 		</div>
+
 	</div>
 
 
-	<div class="section s1">
-		<div class="container-fluid">
-			<div  class="row">
-				<div class = "col-xs-7.5 col-sm-1.5">Prevalence Reduction</div>
-				<div id="prevReduc" class = "col-xs-7.5 col-sm-4 "></div>
-			</div>
-			<div class="row">
-				<div class="col"></div>
-
-				<div class="col"></div>
 
 
-			</div>
-		</div>
 
-		<svg xmlns="http://www.w3.org/2000/svg">
-			<defs>
-				<marker id="arrowhead" markerWidth="4" markerHeight="4"
-						refX="0" refY="2" orient="auto" fill="black">
-					<polygon points="0 0, 4 2, 0 4" />
-				</marker>
-			</defs>
-		</svg>
-	</div>
+
+
 
 
 	<div class="section ">
@@ -249,12 +387,14 @@
 	<div class="section ">
 		<div class="container-fluid">
 			<div class="section-title">
-				<h1>Data Privacy</h1>
+				<h1>Appendix: Data Privacy</h1>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-10">
 					<div class="row justify-content-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+						<p>Since age is such an important confounding variable, why is it not widely reported in this data?</p>
+						<p>The answer is personal medical data privacy. Age is a personal identifier that, when combined with other bits of personal information, can *de-anonymize* otherwise anonymous medical data.</p>
+						<p>There is a tradeoff in the social sciences between collecting accurate information and preserving stakeholder privacy.</p>
 					</div>
 				</div>
 			</div>

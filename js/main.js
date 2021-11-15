@@ -1,5 +1,16 @@
 
-let prevReducViz = new PrevalenceReduction("prevReduc", 100, 10, .62, .1396);
+let prevReducViz1 = new PrevalenceReduction("prevReduc1", 100, 10, .62, .1396);
+
+let prevReducViz2 = new PrevalenceReduction("prevReduc2", 100, 10, .164, .053);
+
+let prevReducViz3 = new PrevalenceReduction("prevReduc3", 100, 10, .039, .003);
+let prevReducViz4 = new PrevalenceReduction("prevReduc4", 100, 10, .916, .136);
+
+let prevReducViz5 = new PrevalenceReduction("prevReduc5", 100, 10, 1, 0);
+let prevReducViz6 = new PrevalenceReduction("prevReduc6", 100, 10, .5, .5);
+let prevReducViz7 = new PrevalenceReduction("prevReduc7", 100, 10, .039, .003);
+let prevReducViz8 = new PrevalenceReduction("prevReduc8", 100, 10, .916, .136);
+
 
 // Load CSV file
 function loadHistogram(htmlElt, fileName, rowNames, colNames) {
