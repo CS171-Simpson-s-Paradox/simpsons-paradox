@@ -11,19 +11,59 @@
 </head>
 <body>
 <h1>Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
+
+
+
+
+
 <div class="row container-fluid">
-
-	<iframe src="https://www.desmos.com/calculator/ifzyc6jlwx?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
-
-</div>
-<div class="row container-fluid">
-
 	<div  class="row container-fluid">
 		<div class = "col-xs-7.5 col-sm-1.5">Prevalence Reduction</div>
 		<div id="prevReduc" class = "col-xs-7.5 col-sm-4 "></div>
 	</div>
 
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: August 15th</div>
+		<div id="myHistIsrAug15" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: August 15th by 2 Ages</div>
+		<div id="myHistIsrAug15Age2" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: August 15th by 10 Ages</div>
+		<div id="myHistIsrAug15Age10" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: September 2nd</div>
+		<div id="myHistIsrSep2" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: September 2nd by 2 Ages</div>
+		<div id="myHistIsrSep2Age2" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: September 2nd by 10 Ages</div>
+		<div id="myHistIsrSep2Age10" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
+	<div  class="row container-fluid">
+		<div class = "col-xs-7.5 col-sm-1.5">Israel: September 20th by 10 Ages</div>
+		<div id="myHistIsrSep20Age10" class = "col-xs-7.5 col-sm-4 "></div>
+	</div>
+
 </div>
+
+<div class="row container-fluid">
+	<iframe src="https://www.desmos.com/calculator/ifzyc6jlwx?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+</div>
+
+
 
 <svg xmlns="http://www.w3.org/2000/svg">
 	<defs>
@@ -44,8 +84,14 @@
 	<!-- d3 -->
 	<script src="https://d3js.org/d3.v6.min.js"></script>
 
+	<!-- 3d -->
+	<script src="https://unpkg.com/d3-3d/build/d3-3d.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+<!---->
 	<!-- Your implementation -->
 	<script src="js/prevalenceReduction.js"></script>
+	<script src="js/myHist.js"></script>
+	<script src="js/newHist.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

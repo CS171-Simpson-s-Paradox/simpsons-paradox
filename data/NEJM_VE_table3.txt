@@ -1,0 +1,18 @@
+Table 3. Estimated Effectiveness of mRNA Vaccines among Health Care Personnel, According to Covid-19 Vaccination Status among Case and Control Participants
+
+Variable	Case Participants
+(N=1472)	Control Participants
+(N=3420)	Vaccine Effectiveness (95% CI)
+Unadjusted Analysis	Adjusted Analysis†
+number (percent)	percent
+Receipt of any Covid-19 vaccine				
+One dose <10 days before test date	249 (17)	375 (11)	25.0 (7.3 to 39.3)	12.8 (−9.4 to 30.5)
+One dose 10–13 days before test date	104 (7)	220 (6)	44.1 (26.2 to 57.7)	36.8 (14.8 to 53.1)
+Partial vaccination	140 (10)	863 (25)	81.3 (76.5 to 85.1)	79.7 (74.1 to 84.1)
+Complete vaccination	167 (11)	1072 (31)	90.2 (87.0 to 92.6)	90.4 (87.0 to 92.9)
+BNT162b2 vaccine				
+Partial vaccination	122 (8)	707 (21)	79.4 (73.7 to 83.9)	77.6 (70.9 to 82.7)
+Complete vaccination	149 (10)	882 (26)	88.9 (85.1 to 91.7)	88.8 (84.6 to 91.8)
+mRNA-1273 vaccine				
+Partial vaccination	18 (1)	156 (5)	89.8 (81.1 to 94.4)	88.9 (78.7 to 94.2)
+Complete vaccination	18 (1)	190 (6)	95.7 (90.4 to 98.0)	96.3 (91.3 to 98.4)
