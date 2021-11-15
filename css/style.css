@@ -3,6 +3,7 @@
 body{
     background-color: lightskyblue;
     fill: #123456;
+
 }
 
 h1{
@@ -11,4 +12,30 @@ h1{
 
 text{
     font-size: 10px;
+}
+
+#header {
+    /*background-color: slateblue;*/
+    text-align:center;
+}
+
+
+
+html,
+body,
+#fullpage,
+.section,
+.slide,
+.fp-tableCell
+{
+    height: 100%
+}
+
+
+
+.section-title {
+
+    width: 100%;
+    position: absolute;
+    top: 10vh;
 }

@@ -7,30 +7,195 @@
 	<title>CS171 - Final Project</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<!--	<link rel="stylesheet" type="text/css" href="css/fullpage.css">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css" integrity="sha512-4rPgyv5iG0PZw8E+oRdfN/Gq+yilzt9rQ8Yci2jJ15rAyBmF0HBE4wFjBkoB72cxBeg63uobaj1UcNt/scV93w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
 
 
+<!--<h1>Simpson's Paradox in Vaccine Effectiveness Estimation</h1>-->
 
-<div class="row container-fluid">
+<div id="fullpage" >
 
-	<div  class="row container-fluid">
-		<div class = "col-xs-7.5 col-sm-1.5">Prevalence Reduction</div>
-		<div id="prevReduc" class = "col-xs-7.5 col-sm-4 "></div>
+	<div class="section title">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<h1 id="header">Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
+			</div>
+		</div>
+
 	</div>
 
-</div>
+	<div class="section s2">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>Calculating Vaccine Effectiveness </h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>Vaccine efficacy or vaccine effectiveness: <br>
+							Vaccine efficacy and vaccine effectiveness measure the proportionate reduction in cases among vaccinated persons. Vaccine efficacy is used when a study is carried out under ideal conditions, for example, during a clinical trial. Vaccine effectiveness is used when a study is carried out under typical field (that is, less than perfectly controlled) conditions.  <br>
+							Vaccine efficacy/effectiveness (VE) is measured by calculating the risk of disease among vaccinated and unvaccinated persons and determining the percentage reduction in risk of disease among vaccinated persons relative to unvaccinated persons. The greater the percentage reduction of illness in the vaccinated group, the greater the vaccine efficacy/effectiveness. The basic formula is written as: <br>
+							(Risk among unvaccinated group − risk among vaccinated group) / Risk among unvaccinated group <br>
+							OR: 1 − risk ratio
+							In the first formula, the numerator (risk among unvaccinated − risk among vaccinated) is sometimes called the risk difference or excess risk.
+							Vaccine efficacy/effectiveness is interpreted as the proportionate reduction in disease among the vaccinated group. So a VE of 90% indicates a 90% reduction in disease occurrence among the vaccinated group, or a 90% reduction from the number of cases you would expect if they have not been vaccinated.
 
-<svg xmlns="http://www.w3.org/2000/svg">
-	<defs>
-		<marker id="arrowhead" markerWidth="4" markerHeight="4"
-				refX="0" refY="2" orient="auto" fill="black">
-			<polygon points="0 0, 4 2, 0 4" />
-		</marker>
-	</defs>
-</svg>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section s1">
+		<div class="container-fluid">
+			<div  class="row">
+				<div class = "col-xs-7.5 col-sm-1.5">Prevalence Reduction</div>
+				<div id="prevReduc" class = "col-xs-7.5 col-sm-4 "></div>
+			</div>
+			<div class="row">
+				<div class="col"></div>
+
+				<div class="col"></div>
+
+			</div>
+		</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<marker id="arrowhead" markerWidth="4" markerHeight="4"
+						refX="0" refY="2" orient="auto" fill="black">
+					<polygon points="0 0, 4 2, 0 4" />
+				</marker>
+			</defs>
+		</svg>
+	</div>
+
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>COVID Vaccines </h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p> COVID-19 vaccines teach our immune systems how to recognize and fight the virus that causes COVID-19. It typically takes 2 weeks after vaccination for the body to build protection (immunity) against the virus that causes COVID-19.
+							People are considered fully vaccinated 2 weeks after their second dose of the Pfizer-BioNTech or Moderna COVID-19 vaccines, or 2 weeks after the single-dose Johnson & Johnson’s Janssen COVID-19 vaccine. To receive the most protection, people should receive all recommended doses of a COVID-19 vaccine. Learn more about who is recommended to get an additional primary dose or a booster dose.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>Simpson's Paradox</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p> Waning efficacy is a real thing: <br>
+							https://www.nytimes.com/live/2021/09/17/world/covid-delta-variant-vaccine <br>
+
+							However, over the summer, there was a moment where people were reacting prematurely to the idea of waning efficacy. New data suggested vaccine effectiveness dropped from ~95% down to ~66%. However, this is fixed when analyzing the age groups one at a time. <br>
+
+
+							This is because age is a confounding variable. Our results change drastically depending on whether we consider this variable, which is an example of Simpson’s paradox: <br>
+
+							“Simpson’s paradox, or the Yule–Simpson effect, is a phenomenon in probability and statistics, in which a trend appears in several different groups of data but disappears or reverses when these groups are combined”
+
+
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>Confounding Factor: Simpson's paradox </h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<div class="col-6">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+						</div>
+						<div class="col-6"> (Visualizations demonstrating paradox for the data sets)</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>Why does Simpson's Paradox Appear? </h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<div class="col-6">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+						</div>
+						<div class="col-6">
+							<img src="img/innovative.jpeg" alt="innovative viz">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1>Data Privacy</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.extensions.min.js" integrity="sha512-v0jjVvFpZqb1BcXhgLbaBDRKwZ09IpWFZL5NHTNbW9MlSjhZihkxEz2uNeMGd6HuK1qnSEL6JdyTr24ZHlgKow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+	new fullpage('#fullpage', {
+		//options here
+		autoScrolling:true,
+		navigation: true,
+		navigationPosition: 'right',
+
+
+
+	});
+</script>
 
 
 
@@ -42,7 +207,12 @@
 	<!-- d3 -->
 	<script src="https://d3js.org/d3.v6.min.js"></script>
 
-	<!-- Your implementation -->
+
+
+
+	<script type="text/javascript" src="js/libraries/fullpage.js"></script>
+
+<!-- Your implementation -->
 	<script src="js/prevalenceReduction.js"></script>
 	<script src="js/main.js"></script>
 </body>
