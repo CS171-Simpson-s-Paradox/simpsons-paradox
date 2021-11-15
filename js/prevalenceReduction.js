@@ -89,9 +89,6 @@ class PrevalenceReduction {
                 .attr('stroke',"#000")
                 .attr('stroke-width',"8")
                 .attr('marker-end', "url(#arrowhead)")
-
         }
-
     }
-
 }
