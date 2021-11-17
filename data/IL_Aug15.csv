@@ -1,5 +1,5 @@
-,# Unvaxed,# Double Dose,% Unvaxed,% Double Dose,# Serious Cases Unvaxed,# Serious Cases Double Dose,# Serious Cases per 100k Unvaxed,# Serious Cases per 100k Double Dose,Efficacy,Name
-0,1302912,5634634,.182,.787,214,301,16.4,5.3,67.5,All ages
-1,1116834,3501118,.233,.73,43,11,3.9,0.3,91.8,< 50
-2,186078,2133516,.079,.904,171,290,91.6,13.6,85.2,>= 50
+,% Pop,# Unvaxed,# Double Dose,% Unvaxed,% Double Dose,# Serious Cases Unvaxed,# Serious Cases Double Dose,# Serious Cases per 100k Unvaxed,# Serious Cases per 100k Double Dose,Efficacy,Name
+0,.7720,1302912,5634634,.182,.787,214,301,16.4,5.3,67.5,All ages
+1,.5171,1116834,3501118,.233,.73,43,11,3.9,0.3,91.8,<50
+2,.2549,186078,2133516,.079,.904,171,290,91.6,13.6,85.2,>= 50
 

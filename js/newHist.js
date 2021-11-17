@@ -150,7 +150,7 @@ class NewHist {
 
         vis.numrows = vis.displayData.length;
         vis.numcols = vis.displayData[0].length;
-        // when j= 10,
+
         vis.j=vis.numrows;
         vis.ixscale = d3.scaleLinear()
             .domain([0, vis.numrows])
