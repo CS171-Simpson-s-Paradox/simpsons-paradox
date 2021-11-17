@@ -16,7 +16,6 @@
 
 <div id="fullpage" >
 
-
 <!--Opening Page-->
 	<div class="section title">
 		<div class="container-fluid">
@@ -24,7 +23,20 @@
 				<h1 id="header">Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
 			</div>
 			<div class="row justify-content-center">
-				<h3 id="header">Ahmed Abukar, Max Cembalest, and Mark Penrod</h3>
+				<h3 id="names">Ahmed Abukar, Max Cembalest, and Mark Penrod</h3>
+			</div>
+
+			<div class="row justify-content-center">
+				The project of encouraging COVID-19 vaccination is one of the most important and urgent public health pursuits in the current day.<br>
+
+				The major mRNA vaccines have undergone rigorous trials to ensure safety and efficacy.<br>
+
+				However, the process of measuring Vaccine Effectiveness (VE) is somewhat technical and, when important features such as age are not taken into account, VE can be misleading.<br>
+
+				In our project we will walk through how VE is measured, and how splitting the data by relevant attributes is a necessary component in reaching a sound analysis.<br>
+
+				This work is intended to help promote clear and accurate messaging regarding waning efficacy.
+
 			</div>
 		</div>
 	</div>
@@ -43,8 +55,10 @@
 			<div class="row justify-content-center">
 				<div class="col-10">
 					<div class="row justify-content-center">
-						<p>Vaccine efficacy or vaccine effectiveness: <br>
-							Vaccine efficacy and vaccine effectiveness measure the proportionate reduction in cases among vaccinated persons. Vaccine efficacy is used when a study is carried out under ideal conditions, for example, during a clinical trial. Vaccine effectiveness is used when a study is carried out under typical field (that is, less than perfectly controlled) conditions.  <br>
+
+							Vaccine efficacy and vaccine effectiveness measure the proportionate reduction from an unvaccinated cohort to a vaccinated cohort.<br>
+
+							Vaccine efficacy is used when a study is carried out under ideal conditions, for example, during a clinical trial. Vaccine effectiveness is used when a study is carried out under typical field (that is, less than perfectly controlled) conditions.  <br>
 							Vaccine efficacy/effectiveness (VE) is measured by calculating the risk of disease among vaccinated and unvaccinated persons and determining the percentage reduction in risk of disease among vaccinated persons relative to unvaccinated persons. The greater the percentage reduction of illness in the vaccinated group, the greater the vaccine efficacy/effectiveness. The basic formula is written as: <br>
 							(Risk among unvaccinated group − risk among vaccinated group) / Risk among unvaccinated group <br>
 							OR: 1 − risk ratio
@@ -58,7 +72,7 @@
 <!--			Prevalence Reduction-->
 			<div   class="col justify-content-center">
 				<div   class="row justify-content-center">
-					<p>Walkthrough from New England Journal of Medicine (NEJM) <br>
+					<p>Prevalence reduction from New England Journal of Medicine (NEJM) <br>
 				</div>
 				<div   class="row justify-content-center">
 					<div id="prevReduc1" class = "col-xs-7.5 col-sm-4 "></div>
@@ -68,6 +82,7 @@
 
 	</div>
 
+	<!--Reusable drawing of an arrow-->
 	<svg xmlns="http://www.w3.org/2000/svg">
 		<defs>
 			<marker id="arrowhead" markerWidth="4" markerHeight="4"
@@ -80,6 +95,68 @@
 
 
 
+<!--Compare two datasets-->
+	<div class="section s2">
+		<div class="container-fluid">
+
+			<!--			Title-->
+			<div class="section-title">
+				<h1>Compare NEJM and Isr data</h1>
+			</div>
+
+			<!--			Description-->
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>We see two major differences.<br>
+							1) the overall prevalence of COVID is much higher in the NEJM dataset than in the Isr dataset.<br>
+							That makes sense, since the NEJM dataset is tracking cases in a hopistal setting, whereas the Isr dataset is measuring the entire population.<br>
+
+
+							2) The first dataset also is measuring the prevalence of # positive cases, whereas the second dataset tracks the *severe* cases.
+							TODO: What is their definition of severe?
+
+
+							3) The vaccine effectiveness itself is actually calculated via the reduction in *odds*<br>
+							APPENDIX: How does our analysis change using odds vs probability? Desmos widget :D
+
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<!--			Prevalence Reduction-->
+				<div   class="col">
+					<div   class="row">
+						<p>Prevalence Reduction from NEJM <br>
+					</div>
+					<div   class="row">
+						<div id="prevReduc2" class = "col-xs-7.5 col-sm-4 "></div>
+					</div>
+				</div>
+
+				<!--			Prevalence Reduction-->
+				<div   class="col ">
+					<div   class="row">
+						<p>Prevalence Reduction from August 15th Israel data <br>
+					</div>
+					<div   class="row">
+						<div id="prevReduc3" class = "col-xs-7.5 col-sm-4 "></div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+
+
+
 
 <!--Question: Is There Waning Vaccine Effectiveness?-->
 	<div class="section s2">
@@ -87,7 +164,7 @@
 
 			<!--			Title-->
 			<div class="section-title">
-				<h1>What about this data from Israel? Is there waning efficacy? </h1>
+				<h1>Is there waning efficacy? </h1>
 			</div>
 
 			<!--			Description-->
@@ -108,7 +185,7 @@
 					<p>Prevalence Reduction from August 15th Israel data <br>
 				</div>
 				<div   class="row justify-content-center">
-					<div id="prevReduc2" class = "col-xs-7.5 col-sm-4 "></div>
+					<div id="prevReduc4" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 			</div>
 		</div>
@@ -146,12 +223,68 @@
 
 			<!--			Prevalence Reduction-->
 
-			<div   class="row">
+			<div   class="row justify-content-center">
 				<div class="col-5">
-					<div id="prevReduc3" class = "col-xs-7.5 col-sm-4 "></div>
+					<div   class="row justify-content-center">
+						<p>Prevalence Reduction from August 15th Israel data 12-49 <br>
+					</div>
+					<div id="prevReduc5" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 				<div class="col-5">
-					<div id="prevReduc4" class = "col-xs-7.5 col-sm-4 "></div>
+					<div   class="row justify-content-center">
+						<p>Prevalence Reduction from August 15th Israel data >= 50 <br>
+					</div>
+					<div id="prevReduc6" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+<!--Lets look at these proportions scaled to population-->
+	<div class="section s2">
+		<div class="container-fluid">
+
+			<!--			Title-->
+			<div class="section-title">
+				<h1>To help explain this, lets adjust by population</h1>
+			</div>
+
+			<!--			Description-->
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="row justify-content-center">
+						<p>Lets look at these efficacy reduction proportions, scaled to the population of each cohort<br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!--			Prevalence Reduction-->
+			<div   class="row justify-content-center">
+				<div class="col-5">
+					<div   class="row justify-content-center">
+						<p>Prevalence Reduction from August 15th Israel data All Ages <br>
+					</div>
+					<div id="prevReduc4Age" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+			<div   class="row justify-content-center">
+				<div class="col-5">
+					<div   class="row justify-content-center">
+						<p>Prevalence Reduction from August 15th Israel data 12-49 <br>
+					</div>
+					<div id="prevReduc5Age" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					<div   class="row justify-content-center">
+						<p>Prevalence Reduction from August 15th Israel data >= 50 <br>
+					</div>
+					<div id="prevReduc6Age" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 			</div>
 
@@ -186,21 +319,36 @@
 			</div>
 
 			<!--			Prevalence Reduction-->
-			<div   class="row">
+			<div   class="row justify-content-center">
 				<div class="col-5">
-					<div id="prevReduc5" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-				<div class="col-5">
-					<div id="prevReduc6" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-			</div>
-
-			<div   class="row">
-				<div class="col-5">
+					NEJM >= 12
 					<div id="prevReduc7" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 				<div class="col-5">
+					Isr >= 12
 					<div id="prevReduc8" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
+			<div   class="row justify-content-center">
+				<div class="col-5">
+					NEJM 12-49
+					<div id="prevReduc9" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					Isr 12-49
+					<div id="prevReduc10" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+			</div>
+
+			<div   class="row justify-content-center">
+				<div class="col-5">
+					NEJM >= 50
+					<div id="prevReduc11" class = "col-xs-7.5 col-sm-4 "></div>
+				</div>
+				<div class="col-5">
+					Isr >= 50
+					<div id="prevReduc12" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 			</div>
 
@@ -309,6 +457,19 @@
 				<div class="col-10">
 					<div id='myHistIsrSep20Age10' class="row justify-content-center">
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section ">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h1> DESMOS!!!!!!!</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<iframe src="https://www.desmos.com/calculator/ipvvdbwdze?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 				</div>
 			</div>
 		</div>
@@ -444,7 +605,6 @@
 
 
 	<script src="js/prevalenceReduction.js"></script>
-	<script src="js/myHist.js"></script>
 	<script src="js/newHist.js"></script>
 	<script src="js/main.js"></script>
 </div>

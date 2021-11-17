@@ -1,0 +1,5 @@
+,% Pop,(+) group vax rate,(-) group vax rate,VE estimate,VE 95% CI interval,Adjusted VE estimate,Adjusted VE 95% CI interval,Name
+20,106/1128,644/2568,81.5,(76.1 to 85.7),80.3,(74.2 to 85.0),"<50, single dose"
+21,130/1128,810/2568,90.2,(86.6 to 92.7),90.3,(86.5 to 93.0),"<50, double dose"
+22,34/331,205/816,78.6,(66.1 to 86.5),77.0,(62.7 to 85.8),">=50, single dose"
+23,36/331,256/816,89.0,(82.0 to 93.3),90.7,(84.2 to 94.6),">=50, double dose"
