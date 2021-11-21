@@ -1,7 +1,7 @@
 
 /* ADD YOUR STYLES HERE */
 body{
-    background-color: lightskyblue;
+    background-color: white;
     fill: #123456;
 
 }
@@ -12,6 +12,14 @@ h1{
 
 text{
     font-size: 10px;
+}
+
+.priv-count-text {
+    text-align: center;
+}
+
+.form-control {
+    margin-left: 10px;
 }
 
 #header {

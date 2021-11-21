@@ -99,6 +99,24 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled
     });
 }
 
+// Data privacy visualization
+d3.csv('data/adult.csv', function(data) {
+    console.log(data)
+    let privViz = new PrivacyCircle('priv-viz', data)
+    d3.select('#Age')
+        .on('change', () => {
+            privViz.wrangleData();
+        })
+    d3.select('#Race')
+        .on('change', () => {
+            privViz.wrangleData();
+        })
+    d3.select('#Sex')
+        .on('change', () => {
+            privViz.wrangleData();
+        })
+})
+
 
 
 

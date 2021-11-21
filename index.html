@@ -551,11 +551,44 @@
 				<h1>Appendix: Data Privacy</h1>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-10">
+				<div class="col-4">
 					<div class="row justify-content-center">
 						<p>Since age is such an important confounding variable, why is it not widely reported in this data?</p>
 						<p>The answer is personal medical data privacy. Age is a personal identifier that, when combined with other bits of personal information, can *de-anonymize* otherwise anonymous medical data.</p>
 						<p>There is a tradeoff in the social sciences between collecting accurate information and preserving stakeholder privacy.</p>
+						<p>The visualization on the right shows the total population of the Adult Income Dataset, a benchmark dataset in data privacy literature containing data from the 1994 Census Database. Notice how the combination of even just a few features can dramatically reduce the number of individuals who match that description in the data.</p>
+					</div>
+				</div>
+				<div class="col-4">
+					<form class="form-inline">
+						<div class="form-group">
+							<select class="form-control" id="Age">
+								<option value="all-ages">All Ages</option>
+								<option value="15-30">15 - 30</option>
+								<option value="31-45">31 - 45</option>
+								<option value="46-60">46 - 60</option>
+								<option value="61-75">61 - 75</option>
+							</select>
+							<select class="form-control" id="Race">
+								<option value="all-races">All Races</option>
+								<option value="Black">Black</option>
+								<option value="White">White</option>
+								<option value="Asian-Pac-Islander">Asian/Pacific Islander</option>
+								<option value="Amer-Indian-Eskimo">Native American</option>
+								<option value="Other">Other</option>
+							</select>
+							<select class="form-control" id="Sex">
+								<option value="all-sexes">All Sexes</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+
+
+							<!-- Activity IV -->
+							<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
+						</div>
+					</form>
+					<div class="row justify-content-center" id="priv-viz">
 					</div>
 				</div>
 			</div>
@@ -606,6 +639,7 @@
 
 	<script src="js/prevalenceReduction.js"></script>
 	<script src="js/newHist.js"></script>
+	<script src="js/privacyCircle.js"></script>
 	<script src="js/main.js"></script>
 </div>
 </body>
