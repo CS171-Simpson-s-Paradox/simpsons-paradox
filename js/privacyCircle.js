@@ -79,7 +79,10 @@ class PrivacyCircle{
         let vis = this;
         let dataLength = vis.filteredData.length
 
-        vis.privCircle.attr('r', vis.radiusScale(vis.filteredData.length))
+        vis.privCircle
+            .transition()
+            .duration(500)
+            .attr('r', vis.radiusScale(vis.filteredData.length))
         vis.privCount.style('font-size', 20)
             .text(`Total count: ${d3.format(',')(vis.filteredData.length)}`)
 

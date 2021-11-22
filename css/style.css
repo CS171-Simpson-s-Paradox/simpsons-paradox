@@ -22,6 +22,22 @@ text{
     margin-left: 10px;
 }
 
+.slide-text {
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 50px;
+}
+
+.slide-text-2 {
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-righ: 50px;
+}
+
+.intro {
+    margin-top: 0;
+}
+
 #header {
     /*background-color: slateblue;*/
     text-align:center;
