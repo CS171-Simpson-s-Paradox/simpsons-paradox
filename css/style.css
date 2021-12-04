@@ -28,7 +28,8 @@ text{
 }
 
 .prevReducTitle {
-    font-weight: bold;
+    font-style: italic;
+    margin-top: 5px;
     font-size: 17px;
 }
 

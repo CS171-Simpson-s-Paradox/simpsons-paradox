@@ -2,7 +2,7 @@
 let colNames = ['# Serious Cases per 100k Unvaxed', '# Serious Cases per 100k Double Dose']
 let moreColNames = ['# Serious Cases per 100k Unvaxed', '# Serious Cases per 100k Double Dose','# Serious Cases per 100k Boosted'];
 let rowNames1 = ['All ages'];
-let rowNames2 = ['12-49', '>= 50'];
+let rowNames2 = ['<50', '>= 50'];
 let rowNames3 = ['12-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+'];
 let NCIRCLES = 300
 
@@ -11,28 +11,28 @@ let NCIRCLES = 300
 let prevReducViz1 = new PrevalenceReduction("prevReduc1", 792, .62, .1396, 300, 1200);
 
 // page 2
-let prevReducViz2 = new PrevalenceReduction("prevReduc2", NCIRCLES-1, .62, .1396, 300, 600);
-loadPrevalenceReduction("prevReduc3","IL_Aug15.csv","All ages", colNames, NCIRCLES,false);
+let prevReducViz2 = new PrevalenceReduction("prevReduc2", NCIRCLES+4, .62, .1396, 300, 600);
+loadPrevalenceReduction("prevReduc3","IL_Aug15.csv","All ages", colNames, NCIRCLES+4, 300, 600,false);
 
 // page 3
-loadPrevalenceReduction("prevReduc4","IL_Aug15.csv","All ages", colNames, NCIRCLES, false);
+loadPrevalenceReduction("prevReduc4","IL_Aug15.csv","All ages", colNames, 792, 300, 1200, false);
 
 // page 4
-loadPrevalenceReduction("prevReduc5","IL_Aug15.csv","12-49", colNames, NCIRCLES, false);
-loadPrevalenceReduction("prevReduc6","IL_Aug15.csv",">= 50", colNames, NCIRCLES, false);
+loadPrevalenceReduction("prevReduc5","IL_Aug15.csv","<50", colNames, NCIRCLES+4, 300, 600, false);
+loadPrevalenceReduction("prevReduc6","IL_Aug15.csv",">= 50", colNames, NCIRCLES+4, 300, 600, false);
 
 // page 5
-loadPrevalenceReduction("prevReduc4Age","IL_Aug15.csv","All ages", colNames, NCIRCLES, true);
-loadPrevalenceReduction("prevReduc5Age","IL_Aug15.csv","12-49", colNames, NCIRCLES, true);
-loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCLES,true);
+loadPrevalenceReduction("prevReduc4Age","IL_Aug15.csv","All ages", colNames, NCIRCLES, 300, 600, false);
+loadPrevalenceReduction("prevReduc5Age","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
+loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
 
 // page 6
 let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-1, .9, .1, 300, 600);
-loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES,false);
+loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES, 300, 600,false);
 let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
-loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","12-49", colNames, NCIRCLES, false);
+loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
 let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);
-loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES,false);
+loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
 
 
 loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
@@ -70,7 +70,7 @@ function loadHistogram(htmlElt, fileName, rowNames, colNames) {
 }
 
 
-function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles, popScaled) {
+function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles, height, width, popScaled) {
 
     // get the data
     d3.csv("data/"+fileName, function(error, data) {
@@ -93,10 +93,10 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles,
             }
         }
         if (popScaled){
-            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, 300, 600);
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
         }
         else{
-            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, 300, 600);
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, height, width);
         }
     });
 }

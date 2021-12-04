@@ -125,7 +125,7 @@ class NewHist {
             mouseY = mouseY || 0;
             beta   = (d3.event.x - mx + mouseX) * Math.PI / 230 ;
             alpha  = (d3.event.y - my + mouseY) * Math.PI / 230  * (-1);
-            processData(cubes3D.rotateY(beta + startAngle).rotateX(alpha - startAngle+rotateOffset)(cubesData), 0, vis.ixscale, vis.jzscale);
+            processData(cubes3D.rotateY(beta + startAngle).rotateX(alpha + startAngle+rotateOffset)(cubesData), 0, vis.ixscale, vis.jzscale);
         }
 
         function dragEnd(){
