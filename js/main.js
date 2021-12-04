@@ -4,33 +4,35 @@ let moreColNames = ['# Serious Cases per 100k Unvaxed', '# Serious Cases per 100
 let rowNames1 = ['All ages'];
 let rowNames2 = ['12-49', '>= 50'];
 let rowNames3 = ['12-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+'];
+let NCIRCLES = 300
+
 
 // page 1
-let prevReducViz1 = new PrevalenceReduction("prevReduc1", 900, .62, .1396);
+let prevReducViz1 = new PrevalenceReduction("prevReduc1", 792, .62, .1396, 300, 1200);
 
 // page 2
-let prevReducViz2 = new PrevalenceReduction("prevReduc2", 900, .62, .1396);
-loadPrevalenceReduction("prevReduc3","IL_Aug15.csv","All ages", colNames, false);
+let prevReducViz2 = new PrevalenceReduction("prevReduc2", NCIRCLES-1, .62, .1396, 300, 600);
+loadPrevalenceReduction("prevReduc3","IL_Aug15.csv","All ages", colNames, NCIRCLES,false);
 
 // page 3
-loadPrevalenceReduction("prevReduc4","IL_Aug15.csv","All ages", colNames, false);
+loadPrevalenceReduction("prevReduc4","IL_Aug15.csv","All ages", colNames, NCIRCLES, false);
 
 // page 4
-loadPrevalenceReduction("prevReduc5","IL_Aug15.csv","12-49", colNames, false);
-loadPrevalenceReduction("prevReduc6","IL_Aug15.csv",">= 50", colNames, false);
+loadPrevalenceReduction("prevReduc5","IL_Aug15.csv","12-49", colNames, NCIRCLES, false);
+loadPrevalenceReduction("prevReduc6","IL_Aug15.csv",">= 50", colNames, NCIRCLES, false);
 
 // page 5
-loadPrevalenceReduction("prevReduc4Age","IL_Aug15.csv","All ages", colNames, true);
-loadPrevalenceReduction("prevReduc5Age","IL_Aug15.csv","12-49", colNames, true);
-loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, true);
+loadPrevalenceReduction("prevReduc4Age","IL_Aug15.csv","All ages", colNames, NCIRCLES, true);
+loadPrevalenceReduction("prevReduc5Age","IL_Aug15.csv","12-49", colNames, NCIRCLES, true);
+loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCLES,true);
 
 // page 6
-let prevReducViz7 = new PrevalenceReduction("prevReduc7", 900, .9, .1);
-loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, false);
-let prevReducViz9 = new PrevalenceReduction("prevReduc9", 900, .5, .5);
-loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","12-49", colNames, false);
-let prevReducViz11 = new PrevalenceReduction("prevReduc11", 900, .5, .5);
-loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, false);
+let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-1, .9, .1, 300, 600);
+loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES,false);
+let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
+loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","12-49", colNames, NCIRCLES, false);
+let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);
+loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES,false);
 
 
 loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
@@ -68,7 +70,7 @@ function loadHistogram(htmlElt, fileName, rowNames, colNames) {
 }
 
 
-function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled) {
+function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles, popScaled) {
 
     // get the data
     d3.csv("data/"+fileName, function(error, data) {
@@ -91,10 +93,10 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled
             }
         }
         if (popScaled){
-            let myPrevReduc = new PrevalenceReduction(htmlElt, 900*popPct, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000);
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, 300, 600);
         }
         else{
-            let myPrevReduc = new PrevalenceReduction(htmlElt, 900, vals[0]/1000,vals[1]/1000);
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, 300, 600);
         }
     });
 }
