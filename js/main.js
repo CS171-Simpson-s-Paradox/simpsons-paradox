@@ -2,8 +2,23 @@
 let colNames = ['# Serious Cases per 100k Unvaxed', '# Serious Cases per 100k Double Dose']
 let moreColNames = ['# Serious Cases per 100k Unvaxed', '# Serious Cases per 100k Double Dose','# Serious Cases per 100k Boosted'];
 let rowNames1 = ['All ages'];
-let rowNames2 = ['12-49', '>= 50'];
+let rowNames2 = ['<50', '>= 50'];
 let rowNames3 = ['12-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+'];
+
+
+
+
+
+//DEMOS
+loadPrevalenceReduction("myPrevReducDemo","IL_Aug15.csv","All ages", colNames, false);
+loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
+loadScatter("myScatterDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
+// let scatterDemo = new NewScatter("myScatterDemo");
+
+
+
+
+
 
 // page 1
 let prevReducViz1 = new PrevalenceReduction("prevReduc1", 900, .62, .1396);
@@ -32,41 +47,181 @@ loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","12-49", colNames, false);
 let prevReducViz11 = new PrevalenceReduction("prevReduc11", 900, .5, .5);
 loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, false);
 
+//
+// loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
+// loadHistogram("myHistIsrAug15Age2", "IL_Aug15.csv", rowNames2, colNames);
+// loadHistogram("myHistIsrAug15Age10", "IL_Aug15_ByAge.csv", rowNames3, colNames);
+// loadHistogram("myHistIsrSep2", "IL_Sep2.csv", rowNames1, colNames);
+// loadHistogram("myHistIsrSep2Age2", "IL_Sep2.csv", rowNames2, colNames);
+// loadHistogram("myHistIsrSep2Age10", "IL_Sep2_ByAge.csv", rowNames3, colNames);
+// loadHistogram("myHistIsrSep20Age10", "IL_Sep20_ByAge.csv", rowNames3, moreColNames);
 
-loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
-loadHistogram("myHistIsrAug15Age2", "IL_Aug15.csv", rowNames2, colNames);
-loadHistogram("myHistIsrAug15Age10", "IL_Aug15_ByAge.csv", rowNames3, colNames);
-loadHistogram("myHistIsrSep2", "IL_Sep2.csv", rowNames1, colNames);
-loadHistogram("myHistIsrSep2Age2", "IL_Sep2.csv", rowNames2, colNames);
-loadHistogram("myHistIsrSep2Age10", "IL_Sep2_ByAge.csv", rowNames3, colNames);
-loadHistogram("myHistIsrSep20Age10", "IL_Sep20_ByAge.csv", rowNames3, moreColNames);
 
-
-// Load CSV file
-function loadHistogram(htmlElt, fileName, rowNames, colNames) {
+function loadHistogram(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowNames3, colNames) {
 
     // get the data
-    d3.csv("data/"+fileName, function(error, data) {
+    d3.csv("data/"+fileName1, function(error, data) {
         if (error) throw error;
 
-        let casevals = [];
-        let agelabels = [];
+        let casevals1 = [];
+        let agelabels1 = [];
+        let popVals1 = [];
 
         for (let i = 0; i < data.length; i++) {
             let ages = data[i]['Name'];
-            if (rowNames.includes(ages)){
+            let pop = data[i]['% Pop'];
+            if (rowNames1.includes(ages)) {
                 let vals = [];
-                for (let j = 0; j < colNames.length; j++){
+                for (let j = 0; j < colNames.length; j++) {
                     vals.push(+data[i][colNames[j]]);
                 }
-                casevals.push(vals);
-                agelabels.push(ages);
+                casevals1.push(vals);
+                agelabels1.push(ages);
+                popVals1.push(pop);
             }
         }
-        let myhist = new NewHist(htmlElt, casevals, agelabels, colNames);
+
+        let casevals2 = [];
+        let agelabels2 = [];
+        let popVals2 = [];
+
+        for (let i = 0; i < data.length; i++) {
+            let ages = data[i]['Name'];
+            let pop = data[i]['% Pop'];
+            if (rowNames2.includes(ages)) {
+                let vals = [];
+                for (let j = 0; j < colNames.length; j++) {
+                    vals.push(+data[i][colNames[j]]);
+                }
+                casevals2.push(vals);
+                agelabels2.push(ages);
+                popVals2.push(pop);
+            }
+        }
+
+
+        // get the data
+        d3.csv("data/"+fileName2, function(error, data) {
+            if (error) throw error;
+
+            let casevals3 = [];
+            let agelabels3 = [];
+            let popVals3 = [];
+
+            for (let i = 0; i < data.length; i++) {
+                let ages = data[i]['Name'];
+                let pop = data[i]['% Pop'];
+                if (rowNames3.includes(ages)) {
+                    let vals = [];
+                    for (let j = 0; j < colNames.length; j++) {
+                        vals.push(+data[i][colNames[j]]);
+                    }
+                    casevals3.push(vals);
+                    agelabels3.push(ages);
+                    popVals3.push(pop);
+                }
+            }
+
+
+            let myhist = new NewHist(htmlElt, casevals1, agelabels1, popVals1, casevals2, agelabels2, popVals2, casevals3, agelabels3, popVals3, colNames);
+
+            d3.select('#HistAge')
+                .on('change', () => {
+                    myhist.wrangleData();
+                });
+
+            d3.select('#HistScale')
+                .on('change', () => {
+                    myhist.wrangleData();
+                });
+
+        });
     });
 }
 
+
+function loadScatter(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowNames3, colNames) {
+
+    // get the data
+    d3.csv("data/"+fileName1, function(error, data) {
+        if (error) throw error;
+
+        let casevals1 = [];
+        let agelabels1 = [];
+        let popVals1 = [];
+
+        for (let i = 0; i < data.length; i++) {
+            let ages = data[i]['Name'];
+            let pop = data[i]['% Pop'];
+            if (rowNames1.includes(ages)) {
+                let vals = [];
+                for (let j = 0; j < colNames.length; j++) {
+                    vals.push(+data[i][colNames[j]]);
+                }
+                casevals1.push(vals);
+                agelabels1.push(ages);
+                popVals1.push(pop);
+            }
+        }
+
+        let casevals2 = [];
+        let agelabels2 = [];
+        let popVals2 = [];
+
+        for (let i = 0; i < data.length; i++) {
+            let ages = data[i]['Name'];
+            let pop = data[i]['% Pop'];
+            if (rowNames2.includes(ages)) {
+                let vals = [];
+                for (let j = 0; j < colNames.length; j++) {
+                    vals.push(+data[i][colNames[j]]);
+                }
+                casevals2.push(vals);
+                agelabels2.push(ages);
+                popVals2.push(pop);
+            }
+        }
+
+
+        // get the data
+        d3.csv("data/"+fileName2, function(error, data) {
+            if (error) throw error;
+
+            let casevals3 = [];
+            let agelabels3 = [];
+            let popVals3 = [];
+
+            for (let i = 0; i < data.length; i++) {
+                let ages = data[i]['Name'];
+                let pop = data[i]['% Pop'];
+                if (rowNames3.includes(ages)) {
+                    let vals = [];
+                    for (let j = 0; j < colNames.length; j++) {
+                        vals.push(+data[i][colNames[j]]);
+                    }
+                    casevals3.push(vals);
+                    agelabels3.push(ages);
+                    popVals3.push(pop);
+                }
+            }
+
+            console.log('about to load scatter plot');
+            console.log(casevals1);
+            let myscatter = new NewScatter(htmlElt, casevals1, agelabels1, popVals1, casevals2, agelabels2, popVals2, casevals3, agelabels3, popVals3, colNames);
+
+            // d3.select('#HistAge')
+            //     .on('change', () => {
+            //         myscatter.wrangleData();
+            //     });
+            //
+            // d3.select('#HistScale')
+            //     .on('change', () => {
+            //         myscatter.wrangleData();
+            //     });
+
+        });
+    });
+}
 
 function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled) {
 
