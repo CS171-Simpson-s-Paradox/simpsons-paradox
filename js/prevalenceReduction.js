@@ -104,14 +104,14 @@ class PrevalenceReduction {
         }
 
         vis.svg.append('text')
-            .attr('class', 'reducPct')
+            .attr('class', 'groupPct')
             .attr('x',vis.r*vis.nCols)
             .attr('y',vis.r*vis.nRows*2 + 20)
             .text(d=>Math.round(1000*vis.pct1)/10+'%')
         ;
 
         vis.svg.append('text')
-            .attr('class', 'reducPct')
+            .attr('class', 'groupPct')
             .attr('x',vis.width - (vis.r*vis.nCols))
             .attr('y',vis.r*vis.nRows*2 + 20)
             .text(d=>Math.round(1000*vis.pct2)/10+'%')
