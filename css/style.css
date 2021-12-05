@@ -1,17 +1,24 @@
 
 /* ADD YOUR STYLES HERE */
 body{
-    background-color: skyblue;
+    background-color: #B4D4F5;
     fill: #123456;
 
 }
 
 h1{
     text-align: center;
+    /*color: white;*/
+}
+
+h2{
+    text-align: center;
+    /*color: white;*/
 }
 
 h3{
     text-align: center;
+    /*color: white;*/
 }
 
 #prevReduc4 .reducPct {
@@ -43,6 +50,7 @@ h3{
 .bar-instruction {
     font-size: 13px;
     font-weight: lighter;
+    padding-left: 40px;
 }
 
 .bar-y-label {
@@ -104,8 +112,8 @@ text{
 
 .slide-text-3 {
     margin-top: 0px;
-    padding-left: 200px;
-    padding-right: 200px;
+    margin-left: 200px;
+    margin-right: 200px;
     font-size: 18px;
 }
 
@@ -125,7 +133,7 @@ text{
 }
 
 .border {
-    background-color: rgba(255, 255, 255, 0.70);
+    background-color: rgba(255,255,255, 0.70);
     padding: 1vh;
     border-radius: 10px;
 }

@@ -69,14 +69,20 @@ class PrevalenceReduction {
             let xPos2 = vis.xScale2(i%vis.nCols);
             let yPos = 2*Math.floor(i/vis.nCols)*vis.r;
 
-            let color1= "lightgrey";
+            // let color1= "rgb(236,236,236, 0.4)";
+            let color1 = "#ECECEC";
+            let stroke1 = 'lightgray'
             if (i < vis.nFilledCircles1){
                 color1="red";
+                stroke1 = '#E40000'
             }
 
-            let color2= "lightgrey";
+            // let color2= "rgb(236,236,236, 0.4)";
+            let color2 = "#ECECEC";
+            let stroke2 = 'lightgrey'
             if (i < vis.nFilledCircles2){
                 color2="red";
+                stroke2 = '#E40000'
             }
 
             vis.svg.append('circle')
@@ -84,11 +90,12 @@ class PrevalenceReduction {
                 .attr('cx', xPos1)
                 .attr('cy', yPos)
                 .attr('fill', color1)
+                .attr('stroke', stroke1)
                 .on('mouseover', function() {
                     d3.select(this).attr('stroke', 'black')
                 })
                 .on('mouseout', function() {
-                    d3.select(this).attr('stroke', color1)
+                    d3.select(this).attr('stroke', stroke1)
                 })
             ;
 
@@ -97,11 +104,12 @@ class PrevalenceReduction {
                 .attr('cx', xPos2)
                 .attr('cy', yPos)
                 .attr('fill', color2)
+                .attr('stroke', stroke2)
                 .on('mouseover', function() {
                     d3.select(this).attr('stroke', 'black')
                 })
                 .on('mouseout', function() {
-                    d3.select(this).attr('stroke', color2)
+                    d3.select(this).attr('stroke', stroke2)
                 })
             ;
 
