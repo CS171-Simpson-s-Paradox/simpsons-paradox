@@ -84,6 +84,12 @@ class PrevalenceReduction {
                 .attr('cx', xPos1)
                 .attr('cy', yPos)
                 .attr('fill', color1)
+                .on('mouseover', function() {
+                    d3.select(this).attr('stroke', 'black')
+                })
+                .on('mouseout', function() {
+                    d3.select(this).attr('stroke', color1)
+                })
             ;
 
             vis.svg.append('circle')
@@ -91,6 +97,12 @@ class PrevalenceReduction {
                 .attr('cx', xPos2)
                 .attr('cy', yPos)
                 .attr('fill', color2)
+                .on('mouseover', function() {
+                    d3.select(this).attr('stroke', 'black')
+                })
+                .on('mouseout', function() {
+                    d3.select(this).attr('stroke', color2)
+                })
             ;
 
             vis.svg.append('line')
