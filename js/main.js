@@ -122,7 +122,6 @@ function loadHistogram(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowN
                 }
             }
 
-
             let myhist = new NewHist(htmlElt, casevals1, agelabels1, popVals1, casevals2, agelabels2, popVals2, casevals3, agelabels3, popVals3, colNames);
 
             d3.select('#HistAge')
