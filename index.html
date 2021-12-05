@@ -16,6 +16,52 @@
 
 <div id="fullpage" >
 
+
+<!--Visualizations Overview-->
+	<div class="section demos">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col justify-content-center" id="myPrevReducDemo"></div>
+				<div class="col justify-content-center" id="myHistDemo"></div>
+				<div class="col-4">
+					<form class="form-inline">
+						<div class="form-group">
+							<select class="form-control" id="HistAge">
+								<option value="all-together">All Ages Together</option>
+								<option value="young-and-old"><50 vs >50</option>
+								<option value="all-separate">All Ages Separately</option>
+							</select>
+							<select class="form-control" id="HistScale">
+								<option value="per-capita">Scaled to Population</option>
+								<option value="raw">Raw Count</option>
+							</select>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div class="row justify-content-center" id="myScatterDemo"></div>
+			<div class="col-4">
+				<form class="form-inline">
+					<div class="form-group">
+						<select class="form-control" id="ScatterAge">
+							<option value="all-together">All Ages Together</option>
+							<option value="young-and-old"><50 vs >50</option>
+							<option value="all-separate">All Ages Separately</option>
+						</select>
+						<select class="form-control" id="ScatterScale">
+							<option value="per-capita">Scaled to Population</option>
+							<option value="raw">Raw Count</option>
+						</select>
+
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
 <!--Opening Page-->
 	<div class="section title">
 		<div class="container-fluid">
@@ -636,6 +682,7 @@
 
 	<script src="js/prevalenceReduction.js"></script>
 	<script src="js/newHist.js"></script>
+	<script src="js/newScatter.js"></script>
 	<script src="js/privacyCircle.js"></script>
 	<script src="js/barchart.js"></script>
 	<script src="js/main.js"></script>
