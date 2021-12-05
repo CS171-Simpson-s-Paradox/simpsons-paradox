@@ -21,11 +21,11 @@ class NewHist {
 
         vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
 
-        vis.width = 500 - vis.margin.left - vis.margin.right;
-        vis.height = 250 - vis.margin.top - vis.margin.bottom;
+        vis.width = 800 - vis.margin.left - vis.margin.right;
+        vis.height = 350 - vis.margin.top - vis.margin.bottom;
 
         vis.origin = [vis.width / 2 - 50, vis.height - 50];
-        vis.scale = 20;
+        vis.scale = 30;
         vis.j = 10;
         vis.alpha = 0;
         vis.beta = 0;
@@ -57,7 +57,6 @@ class NewHist {
             .scale(vis.scale);
 
 
-
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -83,11 +82,14 @@ class NewHist {
 
         vis.mouseX = vis.mouseX || 0;
         vis.mouseY = vis.mouseY || 0;
+        // console.log(d3.event.x, d3.event.y);
         vis.beta   = (d3.event.x - vis.mx + vis.mouseX) * Math.PI / 230 ;
         vis.alpha  = (d3.event.y - vis.my + vis.mouseY) * Math.PI / 230  * (-1);
-
-
-        vis.processData(vis.cubes3D.rotateY(vis.beta + Math.PI).rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
+        vis.tt = 0;
+        vis.updateVis();
+        // vis.processData(vis.cubes3D
+        //     .rotateY(vis.beta + Math.PI)
+        //     .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
     }
 
 
@@ -152,6 +154,7 @@ class NewHist {
             }
             vis.displayData = scaledDisplayData;
         }
+        vis.tt = 1000;
         vis.updateVis();
     }
 
@@ -198,6 +201,8 @@ class NewHist {
                 var _cube = vis.makeCube(h, vis.ixscale(i), vis.jzscale(j));
                 _cube.id = 'cube_' + cnt++;
                 _cube.height = h;
+                console.log("HEIGHT");
+                console.log(h);
                 _cube.val = val;
 
                 _cube.age = vis.ageLabels[i];
@@ -219,7 +224,11 @@ class NewHist {
             }
         }
         // vis.initializeAxes();
-        vis.processData(vis.cubes3D(vis.cubesData), 1000);
+
+        // vis.processData(vis.cubes3D(vis.cubesData), 1000);
+        vis.processData(vis.cubes3D
+            .rotateY(vis.beta + Math.PI)
+            .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), vis.tt, vis.ixscale, vis.jzscale);
 
     }
     processData(data, tt) {
@@ -266,8 +275,6 @@ class NewHist {
 
         /* --------- TEXT ---------*/
 
-        // var cubeLabelLookup = {}
-        // var cubeLabelCount = 0;
 
         var texts = cubes.merge(ce).selectAll('text.valtext').data(function (d) {
             var _t = d.faces.filter(function (d) {
@@ -312,11 +319,8 @@ class NewHist {
 
         texts.exit().remove();
 
-        // cubeLabelCount = 0;
-
         var agetexts = cubes.merge(ce).selectAll('text.agetext').data(function (d) {
-            // console.log("WHAT ABOUT THESE");
-            // console.log(d);
+
             var _t = d.faces.filter(function (d) {
                 return d.face === 'top';
             });
@@ -350,23 +354,11 @@ class NewHist {
                 return vis.origin[1] + vis.scale * (d.centroid.y-0.5);
             })
             .tween('text', function (d) {
-                // console.log(d);
                 var that = d3.select(this);
-                var i = d3.interpolateNumber(+that.text(), Math.abs(d.val));
                 var cubelabel = vis.cubeLabels[cubeLabelCount];
                 cubeLabelCount++;
-                // return (t=> "hello");
                 return function (t) {
-                    console.log(cubelabel);
                     that.text(cubelabel);
-                    // cubeLabelCount++;
-                    // that.text("hello");
-                    // that.text(cubeLabelLookup[cubeLabelCount]);
-                    // cubeLabelCount++;
-                    // that.text(t+"!"+t)
-                    // that.text(i(t).toFixed(1));
-                    // that.text(cubeLabelLookup[cubeLabelCount]);
-                    // cubeLabelCount++;
                 };
             });
 

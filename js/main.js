@@ -9,7 +9,7 @@ let NCIRCLES = 300
 
 //DEMOS
 // loadPrevalenceReduction("myPrevReducDemo","IL_Aug15.csv","All ages", colNames, false);
-loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
+// loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 loadScatter("myScatterDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 // let scatterDemo = new NewScatter("myScatterDemo");
 
@@ -200,19 +200,7 @@ function loadScatter(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowNam
                 }
             }
 
-            console.log('about to load scatter plot');
-            console.log(casevals1);
             let myscatter = new NewScatter(htmlElt, casevals1, agelabels1, popVals1, casevals2, agelabels2, popVals2, casevals3, agelabels3, popVals3, colNames);
-
-            // d3.select('#HistAge')
-            //     .on('change', () => {
-            //         myscatter.wrangleData();
-            //     });
-            //
-            // d3.select('#HistScale')
-            //     .on('change', () => {
-            //         myscatter.wrangleData();
-            //     });
 
         });
     });
