@@ -6,7 +6,8 @@ let rowNames2 = ['<50', '>= 50'];
 let rowNames3 = ['12-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+'];
 let NCIRCLES = 300
 
-
+// Create all prevalence reduction visualizations
+// Distinct initializations based on NEJM vs. Israeli data
 // page 1
 let prevReducViz1 = new PrevalenceReduction("prevReduc1", 792, .62, .1396, 300, 1200);
 
@@ -27,8 +28,9 @@ loadPrevalenceReduction("prevReduc5Age","IL_Aug15.csv","<50", colNames, NCIRCLES
 loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
 
 // page 6
-let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-1, .9, .1, 300, 600);
-loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES, 300, 600,false);
+let barChart = new BarChart('barChart');
+let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .9, .1, 200, 600);
+loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES-44, 200, 600);
 let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
 loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
 let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);

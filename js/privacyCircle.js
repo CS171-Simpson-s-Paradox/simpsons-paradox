@@ -33,6 +33,11 @@ class PrivacyCircle{
             .range([10, 20])
 
         // Text and Circle objects
+        vis.baseCircle = vis.svg.append('circle')
+            .attr('cx', vis.width/2 - 30)
+            .attr('cy', vis.height/2)
+            .attr('fill', 'lightgrey')
+            .attr('r', vis.height/2)
         vis.privCircle = vis.svg.append('circle')
             .attr('cx', vis.width/2 - 30)
             .attr('cy', vis.height/2)
