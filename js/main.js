@@ -8,7 +8,7 @@ let NCIRCLES = 300
 
 
 //DEMOS
-loadPrevalenceReduction("myPrevReducDemo","IL_Aug15.csv","All ages", colNames, false);
+// loadPrevalenceReduction("myPrevReducDemo","IL_Aug15.csv","All ages", colNames, false);
 loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 loadScatter("myScatterDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 // let scatterDemo = new NewScatter("myScatterDemo");
@@ -241,12 +241,12 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled
                 }
             }
         }
-        if (popScaled){
-            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
-        }
-        else{
-            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, height, width);
-        }
+        // if (popScaled){
+        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
+        // }
+        // else{
+        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES, vals[0]/1000,vals[1]/1000, height, width);
+        // }
     });
 }
 

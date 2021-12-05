@@ -140,6 +140,8 @@ class NewHist {
             popScale = vis.popVals3;
         }
 
+        vis.ageRange = ageRange;
+
         if (barScale=="per-capita"){
             vis.displayData = tempDisplayData;
         }
@@ -165,16 +167,9 @@ class NewHist {
                 }
             }
         }
-
-        // vis.color = d3.scaleOrdinal(d3.schemeCategory20);
-        console.log("MAX");
-        console.log(maxval);
         vis.colorScale = d3.scaleLinear()
             .domain([0, maxval])
-            // .interpolator(d3.interpolatePuRd);
             .range([0.5, 1]);
-        // vis.color = d3.interpolateReds(vis.colorScale);
-        // vis.color = d3.scaleSequential(d3.interpolateInferno(vis.colorScale));
 
         vis.j=vis.numrows;
         vis.ixscale = d3.scaleLinear()
@@ -194,6 +189,7 @@ class NewHist {
 
         var cnt = 0;
         vis.cubesData = [];
+        vis.cubeLabels = []
         for (let i = 0; i < vis.numrows; i++) {
             for (let j = 0; j < vis.numcols; j++){
 
@@ -203,7 +199,22 @@ class NewHist {
                 _cube.id = 'cube_' + cnt++;
                 _cube.height = h;
                 _cube.val = val;
+
                 _cube.age = vis.ageLabels[i];
+                _cube.vax = (j==1) ? "Double Dose" : "Unvaccinated";
+
+                if (vis.ageRange=="all-separate"){
+                    if (_cube.age=="90+" || _cube.age=="12-15"){
+                        vis.cubeLabels.push(_cube.vax+"\n"+_cube.age);
+                    }
+                    else{
+                        vis.cubeLabels.push(_cube.age);
+                    }
+                }
+                else {
+                    vis.cubeLabels.push(_cube.vax+ '  '+_cube.age);
+                }
+
                 vis.cubesData.push(_cube);
             }
         }
@@ -255,6 +266,9 @@ class NewHist {
 
         /* --------- TEXT ---------*/
 
+        // var cubeLabelLookup = {}
+        // var cubeLabelCount = 0;
+
         var texts = cubes.merge(ce).selectAll('text.valtext').data(function (d) {
             var _t = d.faces.filter(function (d) {
                 return d.face === 'top';
@@ -292,13 +306,13 @@ class NewHist {
                 var that = d3.select(this);
                 var i = d3.interpolateNumber(+that.text(), Math.abs(d.val));
                 return function (t) {
-                    that.text(i(t).toFixed(1));
+                    that.text('');
                 };
             });
 
         texts.exit().remove();
 
-
+        // cubeLabelCount = 0;
 
         var agetexts = cubes.merge(ce).selectAll('text.agetext').data(function (d) {
             // console.log("WHAT ABOUT THESE");
@@ -308,7 +322,7 @@ class NewHist {
             });
             return [{val: d.val, centroid: _t[0].centroid}];
         });
-
+        let cubeLabelCount = 0;
         agetexts
             .enter()
             .append('text')
@@ -333,15 +347,26 @@ class NewHist {
                 return vis.origin[0] + vis.scale * (d.centroid.x)
             })
             .attr('y', function (d) {
-                return vis.origin[1] + vis.scale * (d.centroid.y-1.5);
+                return vis.origin[1] + vis.scale * (d.centroid.y-0.5);
             })
             .tween('text', function (d) {
                 // console.log(d);
                 var that = d3.select(this);
                 var i = d3.interpolateNumber(+that.text(), Math.abs(d.val));
+                var cubelabel = vis.cubeLabels[cubeLabelCount];
+                cubeLabelCount++;
+                // return (t=> "hello");
                 return function (t) {
-                    // that.text(index + "..."+t);
-                    that.text(i(t).toFixed(1));
+                    console.log(cubelabel);
+                    that.text(cubelabel);
+                    // cubeLabelCount++;
+                    // that.text("hello");
+                    // that.text(cubeLabelLookup[cubeLabelCount]);
+                    // cubeLabelCount++;
+                    // that.text(t+"!"+t)
+                    // that.text(i(t).toFixed(1));
+                    // that.text(cubeLabelLookup[cubeLabelCount]);
+                    // cubeLabelCount++;
                 };
             });
 
