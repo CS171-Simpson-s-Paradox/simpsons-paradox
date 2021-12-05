@@ -27,6 +27,11 @@ h1{
     font-size: 16px;
 }
 
+.bar-instruction {
+    font-size: 13px;
+    font-weight: lighter;
+}
+
 .bar-y-label {
     font-size: 13px;
 }
