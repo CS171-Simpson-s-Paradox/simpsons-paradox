@@ -21,11 +21,11 @@ class NewHist {
 
         vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
 
-        vis.width = 500 - vis.margin.left - vis.margin.right;
-        vis.height = 250 - vis.margin.top - vis.margin.bottom;
+        vis.width = 800 - vis.margin.left - vis.margin.right;
+        vis.height = 350 - vis.margin.top - vis.margin.bottom;
 
         vis.origin = [vis.width / 2 - 50, vis.height - 50];
-        vis.scale = 20;
+        vis.scale = 30;
         vis.j = 10;
         vis.alpha = 0;
         vis.beta = 0;
@@ -57,7 +57,6 @@ class NewHist {
             .scale(vis.scale);
 
 
-
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -83,11 +82,14 @@ class NewHist {
 
         vis.mouseX = vis.mouseX || 0;
         vis.mouseY = vis.mouseY || 0;
+        // console.log(d3.event.x, d3.event.y);
         vis.beta   = (d3.event.x - vis.mx + vis.mouseX) * Math.PI / 230 ;
         vis.alpha  = (d3.event.y - vis.my + vis.mouseY) * Math.PI / 230  * (-1);
-
-
-        vis.processData(vis.cubes3D.rotateY(vis.beta + Math.PI).rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
+        vis.tt = 0;
+        vis.updateVis();
+        // vis.processData(vis.cubes3D
+        //     .rotateY(vis.beta + Math.PI)
+        //     .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
     }
 
 
@@ -140,6 +142,8 @@ class NewHist {
             popScale = vis.popVals3;
         }
 
+        vis.ageRange = ageRange;
+
         if (barScale=="per-capita"){
             vis.displayData = tempDisplayData;
         }
@@ -150,6 +154,7 @@ class NewHist {
             }
             vis.displayData = scaledDisplayData;
         }
+        vis.tt = 1000;
         vis.updateVis();
     }
 
@@ -165,16 +170,9 @@ class NewHist {
                 }
             }
         }
-
-        // vis.color = d3.scaleOrdinal(d3.schemeCategory20);
-        console.log("MAX");
-        console.log(maxval);
         vis.colorScale = d3.scaleLinear()
             .domain([0, maxval])
-            // .interpolator(d3.interpolatePuRd);
             .range([0.5, 1]);
-        // vis.color = d3.interpolateReds(vis.colorScale);
-        // vis.color = d3.scaleSequential(d3.interpolateInferno(vis.colorScale));
 
         vis.j=vis.numrows;
         vis.ixscale = d3.scaleLinear()
@@ -194,6 +192,7 @@ class NewHist {
 
         var cnt = 0;
         vis.cubesData = [];
+        vis.cubeLabels = []
         for (let i = 0; i < vis.numrows; i++) {
             for (let j = 0; j < vis.numcols; j++){
 
@@ -202,13 +201,34 @@ class NewHist {
                 var _cube = vis.makeCube(h, vis.ixscale(i), vis.jzscale(j));
                 _cube.id = 'cube_' + cnt++;
                 _cube.height = h;
+                console.log("HEIGHT");
+                console.log(h);
                 _cube.val = val;
+
                 _cube.age = vis.ageLabels[i];
+                _cube.vax = (j==1) ? "Double Dose" : "Unvaccinated";
+
+                if (vis.ageRange=="all-separate"){
+                    if (_cube.age=="90+" || _cube.age=="12-15"){
+                        vis.cubeLabels.push(_cube.vax+"\n"+_cube.age);
+                    }
+                    else{
+                        vis.cubeLabels.push(_cube.age);
+                    }
+                }
+                else {
+                    vis.cubeLabels.push(_cube.vax+ '  '+_cube.age);
+                }
+
                 vis.cubesData.push(_cube);
             }
         }
         // vis.initializeAxes();
-        vis.processData(vis.cubes3D(vis.cubesData), 1000);
+
+        // vis.processData(vis.cubes3D(vis.cubesData), 1000);
+        vis.processData(vis.cubes3D
+            .rotateY(vis.beta + Math.PI)
+            .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), vis.tt, vis.ixscale, vis.jzscale);
 
     }
     processData(data, tt) {
@@ -255,6 +275,7 @@ class NewHist {
 
         /* --------- TEXT ---------*/
 
+
         var texts = cubes.merge(ce).selectAll('text.valtext').data(function (d) {
             var _t = d.faces.filter(function (d) {
                 return d.face === 'top';
@@ -292,23 +313,20 @@ class NewHist {
                 var that = d3.select(this);
                 var i = d3.interpolateNumber(+that.text(), Math.abs(d.val));
                 return function (t) {
-                    that.text(i(t).toFixed(1));
+                    that.text('');
                 };
             });
 
         texts.exit().remove();
 
-
-
         var agetexts = cubes.merge(ce).selectAll('text.agetext').data(function (d) {
-            // console.log("WHAT ABOUT THESE");
-            // console.log(d);
+
             var _t = d.faces.filter(function (d) {
                 return d.face === 'top';
             });
             return [{val: d.val, centroid: _t[0].centroid}];
         });
-
+        let cubeLabelCount = 0;
         agetexts
             .enter()
             .append('text')
@@ -333,15 +351,14 @@ class NewHist {
                 return vis.origin[0] + vis.scale * (d.centroid.x)
             })
             .attr('y', function (d) {
-                return vis.origin[1] + vis.scale * (d.centroid.y-1.5);
+                return vis.origin[1] + vis.scale * (d.centroid.y-0.5);
             })
             .tween('text', function (d) {
-                // console.log(d);
                 var that = d3.select(this);
-                var i = d3.interpolateNumber(+that.text(), Math.abs(d.val));
+                var cubelabel = vis.cubeLabels[cubeLabelCount];
+                cubeLabelCount++;
                 return function (t) {
-                    // that.text(index + "..."+t);
-                    that.text(i(t).toFixed(1));
+                    that.text(cubelabel);
                 };
             });
 
