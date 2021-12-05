@@ -9,6 +9,11 @@ body{
 h1{
     text-align: center;
 }
+
+h3{
+    text-align: center;
+}
+
 #prevReduc4 .reducPct {
     font-weight: bold;
     font-size: 15px;
@@ -21,6 +26,14 @@ h1{
     font-weight: bold;
     font-size: 15px;
 }
+#prevReduc7 .reducPct {
+    font-weight: bold;
+    font-size: 15px;
+}#prevReduc8 .reducPct {
+     font-weight: bold;
+     font-size: 15px;
+ }
+
 
 .age-breakdown-title {
     font-weight: bold;
@@ -79,7 +92,26 @@ text{
 .slide-text {
     margin-left: 250px;
     margin-right: 250px;
-    margin-top: 50px;
+    margin-top: 0px;
+}
+
+.comp-title {
+    text-align: center;
+    font-size: 13px;
+    /*font-weight: lighter;*/
+    margin-bottom: 15px;
+}
+
+.slide-text-3 {
+    margin-top: 0px;
+    padding-left: 200px;
+    padding-right: 200px;
+    font-size: 18px;
+}
+
+.effect-text {
+    font-size: 18px;
+    text-align: center;
 }
 
 .slide-text-2 {

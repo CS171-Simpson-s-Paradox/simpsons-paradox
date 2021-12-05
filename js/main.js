@@ -16,10 +16,10 @@ loadScatter("myScatterDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, ro
 
 
 // page 1
-let prevReducViz1 = new PrevalenceReduction("prevReduc1", 792, .62, .1396, 300, 1200);
+let prevReducViz1 = new PrevalenceReduction("prevReduc1", 792, .36, .1396, 300, 1200);
 
 // page 2
-let prevReducViz2 = new PrevalenceReduction("prevReduc2", NCIRCLES+4, .62, .1396, 300, 600);
+let prevReducViz2 = new PrevalenceReduction("prevReduc2", NCIRCLES+4, .36, .1396, 300, 600);
 loadPrevalenceReduction("prevReduc3","IL_Aug15.csv","All ages", colNames, NCIRCLES+4, 300, 600,false);
 
 // page 3
@@ -36,12 +36,12 @@ loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCL
 
 // page 6
 let barChart = new BarChart('barChart');
-let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .9, .1, 200, 600);
+let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .36, .1396, 200, 600);
 loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES-44, 200, 600);
-let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
-loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
-let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);
-loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
+// let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
+// loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
+// let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);
+// loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
 
 //
 // loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
