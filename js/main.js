@@ -218,7 +218,7 @@ function loadScatter(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowNam
     });
 }
 
-function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, popScaled) {
+function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, height, width, popScaled) {
 
 
     // get the data
