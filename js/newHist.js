@@ -86,8 +86,10 @@ class NewHist {
         vis.beta   = (d3.event.x - vis.mx + vis.mouseX) * Math.PI / 230 ;
         vis.alpha  = (d3.event.y - vis.my + vis.mouseY) * Math.PI / 230  * (-1);
 
+
         vis.processData(vis.cubes3D.rotateY(vis.beta + Math.PI).rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
     }
+
 
     dragEnd(){
         let vis = this;

@@ -9,9 +9,63 @@ body{
 h1{
     text-align: center;
 }
+#prevReduc4 .reducPct {
+    font-weight: bold;
+    font-size: 15px;
+}
+#prevReduc5 .reducPct {
+    font-weight: bold;
+    font-size: 15px;
+}
+#prevReduc6 .reducPct {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.age-breakdown-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.bar-instruction {
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+.bar-y-label {
+    font-size: 13px;
+}
+
+.x-axis text {
+    font-size: 13px;
+}
 
 text{
     font-size: 10px;
+}
+
+.section {
+    margin: 20px 20px 0 20px;
+}
+
+.prevReduc {
+    margin-left: 75px;
+}
+
+.reducPct {
+    font-size: 14px;
+    text-anchor: middle;
+}
+
+.groupPct {
+    font-size: 14px;
+    text-anchor: middle;
+}
+
+.prevReducTitle {
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 17px;
 }
 
 .priv-count-text {
@@ -29,9 +83,9 @@ text{
 }
 
 .slide-text-2 {
-    margin-top: 100px;
-    margin-left: 50px;
-    margin-righ: 50px;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
 }
 
 .intro {

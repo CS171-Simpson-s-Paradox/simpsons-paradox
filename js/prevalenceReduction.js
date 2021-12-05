@@ -2,11 +2,13 @@
 
 class PrevalenceReduction {
 
-    constructor(parentElement, nCircles, pct1, pct2) {
+    constructor(parentElement, nCircles, pct1, pct2, height, width) {
         this.parentElement = parentElement;
         this.nCircles = nCircles;
         this.pct1 = pct1;
         this.pct2 = pct2;
+        this.baseHeight = height;
+        this.baseWidth = width;
 
         this.initVis();
     }
@@ -18,13 +20,13 @@ class PrevalenceReduction {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
+        vis.margin = {top: 20, right: 100, bottom: 20, left: 20};
 
-        vis.width = 500 - vis.margin.left - vis.margin.right;
-        vis.height = 200 - vis.margin.top - vis.margin.bottom;
+        vis.width = vis.baseWidth - vis.margin.left - vis.margin.right;
+        vis.height = vis.baseHeight - vis.margin.top - vis.margin.bottom;
 
         vis.arrowStart = 2.8*vis.width/7;
-        vis.arrowEnd = 3.8*vis.width/7;
+        vis.arrowEnd = 4.2*vis.width/7;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -33,7 +35,7 @@ class PrevalenceReduction {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        vis.r = 2;
+        vis.r = 5;
         vis.nCols= (vis.width/3)/(2*vis.r);
         vis.nRows = Math.round(vis.nCircles/vis.nCols);
 
@@ -67,12 +69,12 @@ class PrevalenceReduction {
             let xPos2 = vis.xScale2(i%vis.nCols);
             let yPos = 2*Math.floor(i/vis.nCols)*vis.r;
 
-            let color1= "blue";
+            let color1= "lightgrey";
             if (i < vis.nFilledCircles1){
                 color1="red";
             }
 
-            let color2= "blue";
+            let color2= "lightgrey";
             if (i < vis.nFilledCircles2){
                 color2="red";
             }
@@ -94,43 +96,47 @@ class PrevalenceReduction {
             vis.svg.append('line')
                 .attr('x1',vis.arrowStart)
                 .attr('x2',vis.arrowEnd)
-                .attr('y1',vis.height/2)
-                .attr('y2',vis.height/2)
+                .attr('y1',vis.nRows*vis.r)
+                .attr('y2',vis.nRows*vis.r)
                 .attr('stroke',"#000")
-                .attr('stroke-width',"8")
+                .attr('stroke-width',"3")
                 .attr('marker-end', "url(#arrowhead)")
         }
 
         vis.svg.append('text')
-            .attr('x',vis.arrowStart)
-            .attr('y',vis.height/2-30)
+            .attr('class', 'groupPct')
+            .attr('x',vis.r*vis.nCols)
+            .attr('y',vis.r*vis.nRows*2 + 20)
             .text(d=>Math.round(1000*vis.pct1)/10+'%')
         ;
 
         vis.svg.append('text')
-            .attr('x',vis.arrowEnd+20)
-            .attr('y',vis.height/2-30)
+            .attr('class', 'groupPct')
+            .attr('x',vis.width - (vis.r*vis.nCols))
+            .attr('y',vis.r*vis.nRows*2 + 20)
             .text(d=>Math.round(1000*vis.pct2)/10+'%')
         ;
 
+        // vis.svg.append('text')
+        //     .attr('x',0.5*vis.arrowStart+0.5*vis.arrowEnd)
+        //     .attr('y',vis.height/2+30)
+        //     .text(function(d) {
+        //         let res = ""
+        //         res += "VE = 1 - ";
+        //         res += Math.round(1000*vis.pct1)/1000;
+        //         res += '/';
+        //         res += Math.round(1000*vis.pct2)/1000;
+        //
+        //         return res;
+        //     })
+        // ;
         vis.svg.append('text')
-            .attr('x',0.5*vis.arrowStart+0.5*vis.arrowEnd - 15)
-            .attr('y',vis.height/2+30)
+            .attr('class','reducPct')
+            // .style('font-size', 14)
+            .attr('x',vis.arrowStart+((vis.arrowEnd-vis.arrowStart)/2))
+            .attr('y',vis.nRows*vis.r + 30)
             .text(function(d) {
-                let res = ""
-                res += "VE = 1 - ";
-                res += Math.round(1000*vis.pct1)/1000;
-                res += '/';
-                res += Math.round(1000*vis.pct2)/1000;
-                return res;
-            })
-        ;
-        vis.svg.append('text')
-            .attr('x',0.5*vis.arrowStart+0.5*vis.arrowEnd - 15)
-            .attr('y',vis.height/2+50)
-            .text(function(d) {
-                let res = ""
-                res += Math.round(1000*(1 - vis.pct2/vis.pct1))/10+'%';
+                let res = `VE = ${Math.round(1000*(1 - vis.pct2/vis.pct1))/10}%`;
                 return res;
             });
     }
