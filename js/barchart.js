@@ -23,9 +23,9 @@ class BarChart {
 		let vis = this;
 
 		//setup SVG
-		vis.margin = {top: 20, right: 60, bottom: 22, left: 100};
+		vis.margin = {top: 40, right: 60, bottom: 22, left: 100};
 		vis.width = 700 - vis.margin.left - vis.margin.right;
-		vis.height = 400 - vis.margin.top - vis.margin.bottom;
+		vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
 		// Values for bar graph
 		vis.groups = ['All ages', '< 50', '>= 50']
@@ -146,16 +146,16 @@ class BarChart {
 			d3.select('#prevReduc7').select('svg').remove()
 			if (pop > 5000000) {
 				choice = 'All ages'
-				filterTitle = choice
-				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .9, .1, 200, 600);
+				filterTitle = ':  All ages'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .36, .134, 200, 600);
 			} else if (pop > 3000000) {
 				choice = '<50'
-				filterTitle = 'Age < 50'
-				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .5, .5, 200, 600);
+				filterTitle = ':  Age < 50'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, 0.362, .138, 200, 600);
 			} else if (pop > 1000000) {
 				choice = '>= 50'
-				filterTitle = 'Age >= 50'
-				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .5, .5, 200, 600);
+				filterTitle = ':  Age >= 50'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .345, .123, 200, 600);
 
 			}
 
@@ -165,8 +165,8 @@ class BarChart {
 				.text(filterTitle)
 
 			// Update Israel data
-			d3.select('#prevReduc8').select('svg').remove()
 			loadPrevalenceReduction("prevReduc8","IL_Aug15.csv",choice, colNames, NCIRCLES-44, 200, 600);
+			d3.select('#prevReduc8').select('svg').remove()
 
 			return choice
 		}
