@@ -10,12 +10,8 @@
 
 class BarChart {
 
-	constructor(parentElement, data, config) {
+	constructor(parentElement) {
 		this.parentElement = parentElement;
-		this.data = data;
-		this.config = config;
-		this.displayData = data;
-		this.filteredData = data;
 		this.initVis();
 	}
 
@@ -27,48 +23,71 @@ class BarChart {
 		let vis = this;
 
 		//setup SVG
-		vis.margin = {top: 0, right: 30, bottom: 0, left: 140};
-		vis.width = 600 - vis.margin.left - vis.margin.right;
-		vis.height = 150 - vis.margin.top - vis.margin.bottom;
+		vis.margin = {top: 40, right: 60, bottom: 22, left: 100};
+		vis.width = 700 - vis.margin.left - vis.margin.right;
+		vis.height = 450 - vis.margin.top - vis.margin.bottom;
 
+		// Values for bar graph
+		vis.groups = ['All ages', '< 50', '>= 50']
+		vis.pops = [6937546, 4617952, 2319594]
 
-		let svg = d3.select("#"+vis.parentElement).append("svg")
-			.attr("width", vis.width + vis.margin.left + vis.margin.right)
-			.attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+		vis.svg = d3.select("#"+vis.parentElement).append("svg")
+			.attr("width", vis.width)
+			.attr("height", vis.height)
 			.append("g")
 			.attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+
 		// Draw the y axis
-		svg.append("g")
+		vis.svg.append("g")
 			// .attr("id", "yAxisLabel")
 			.attr("class", "axis y-axis")
+			.append('text')
+			.attr('class', 'bar-y-label')
+			.text('Population')
+			.attr('x', -((vis.height-vis.margin.top - 3*vis.margin.bottom)/2))
+			.attr('y', -70)
+			.style('fill', 'black')
+			.style('text-anchor', 'center')
+			.attr('transform', 'rotate(-90)')
 		;
 
-		svg.append("g")
+		vis.svg.append("g")
 			.attr("id", "barWidthLabel")
 			.attr("x",50)
 			.attr("y",50)
 		;
 
-		svg.append("g")
-			.attr("id", "yAxisLabel")
-		;
+		vis.svg.append('g')
+			.attr('class', 'axis x-axis')
+			.attr('transform', `translate(0, ${vis.height - vis.margin.top - vis.margin.bottom})`)
 
-		vis.svg = svg;
 
 
 
 		// Scales and axes
-		vis.x = d3.scaleLinear()
-			.range([0, vis.width]);
-		vis.y = d3.scalePoint()
-			.range([40, vis.height - 40]);
+		vis.x = d3.scaleBand()
+			.domain([0, 1, 2])
+			.range([0, vis.width - vis.margin.right - vis.margin.left])
+			.padding(.1);
+		vis.y = d3.scaleLinear()
+			.domain([0, 7000000])
+			.range([vis.height - vis.margin.top - vis.margin.bottom, vis.margin.top])
 		vis.yAxis = d3.axisLeft()
 			.scale(vis.y)
-			.tickValues([]);
+			.ticks(7)
+		vis.xAxis = d3.axisBottom()
+			.scale(vis.x)
+			.ticks(3)
+			.tickFormat(d => vis.groups[d])
+		console.log(vis.height - vis.margin.top - vis.margin.bottom)
+
+		vis.svg.select('.x-axis').call(vis.xAxis)
 
 		// (Filter, aggregate, modify data)
 		vis.wrangleData();
 	}
+
+
 
 	/*
 	 * Data wrangling
@@ -76,10 +95,10 @@ class BarChart {
 
 	wrangleData() {
 		let vis = this;
-		let countByConfig = Array.from(d3.rollup(vis.filteredData,leaves=>leaves.length,d=>d[vis.config]), ([key, value]) => ({'config' : key, 'value' : value}));
+		// let countByConfig = Array.from(d3.rollup(vis.filteredData,leaves=>leaves.length,d=>d[vis.config]), ([key, value]) => ({'config' : key, 'value' : value}));
 
 		//sort in descending order by value
-		vis.displayData = countByConfig.sort((a, b) => b.value - a.value);
+		// vis.displayData = countByConfig.sort((a, b) => b.value - a.value);
 		// Update the visualization
 		vis.updateVis();
 	}
@@ -89,91 +108,69 @@ class BarChart {
 	 */
 
 	updateVis() {
-		console.log("reconfigure: "+ this.config);
 		let vis = this;
 		// console.log(vis.displayData);
-
-		//update domains
-		let domainVals = vis.displayData.map((d,index)=>index);
-		//console.log(domainVals);
-		vis.y.domain(domainVals);
-		vis.x.domain([0,d3.max(vis.displayData.map(d=>d.value))]);
-		// vis.x.domain(d3.extent(vis.displayData.map(d=>d.value)));
 
 
 
 		// data join for the rectangles
-		let rectangles = vis.svg.selectAll("rect")
-			.data(vis.displayData)
+		vis.rectangles = vis.svg.selectAll("rect")
+			.data(vis.pops)
 		;
 		//enter
-		rectangles
+		vis.rectangles
 			.enter()
 			.append("rect")
-			.attr("x",0)
-			.attr("height",20)
+			.attr("x",(d,i) => {return vis.x(i) + 20})
+			.attr('y', d => vis.y(d))
+			.attr("width",70)
+			.attr('height', (d) => {
+				console.log(d, d3.max(vis.pops), vis.y(d))
+				return vis.height - vis.margin.bottom - vis.margin.top - vis.y(d)
+			})
 			.attr("stroke", "black")
-			// update
-			.merge(rectangles)
-			.attr("width", d => vis.x(d.value))
-			.transition()
-			.duration(300)
-			.attr("y", (d,index)=>vis.y(index)-5)
-		;
-		//exit
-		rectangles.exit().remove();
-
-
-
-
-		//
-		// data join for the y axis bar labels
-		let barlabels = vis.svg.select("#yAxisLabel").selectAll("text")
-			.data(vis.displayData)
-		;
-		//enter
-		barlabels
-			.enter()
-			.append("text")
-			.attr("text-anchor", "end")
-			.attr("x",-10)
-			//update
-			.merge(barlabels)
-			.transition()
-			.duration(300)
-			.attr("y",(d,index)=>vis.y(index))
-			.text(d=>d.config)
-		;
-		//exit
-		barlabels.exit().remove();
-
-		// data join for the rectangle width labels
-		let labels = vis.svg.select("#barWidthLabel").selectAll("text")
-			.data(vis.displayData)
-		;
-		//enter
-		labels
-			.enter()
-			.append("text")
-			// .attr("font-size",20)
-			// .attr("fill", "black")
-			// .attr("text-anchor", "start")
-			//update
-			.merge(labels)
-			.transition()
-			.duration(300)
-			.attr("x",d=> {
-				console.log(vis.x(d.value));
-				return vis.x(d.value);
+			.on('mouseover', function() {
+				d3.select(this).style('fill', '#275E95')
 			})
-			.attr("y",(d,index)=> {
-				// console.log(vis.y(index));
-				return vis.y(index)+7;
+			.on('mouseleave', function() {
+				d3.select(this).style('fill', '#123456')
 			})
-			.text(d=>d.value);
-		;
-		//exit
-		labels.exit().remove();
+			.on('click', function(d) {
+				console.log(clicked(d))
+			});
+
+		function clicked(pop){
+			let choice = ''
+			let filterTitle = ''
+			// Update NEJM data
+			d3.select('#prevReduc7').select('svg').remove()
+			if (pop > 5000000) {
+				choice = 'All ages'
+				filterTitle = ':  All ages'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .36, .134, 200, 600);
+			} else if (pop > 3000000) {
+				choice = '<50'
+				filterTitle = ':  Age < 50'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, 0.362, .138, 200, 600);
+			} else if (pop > 1000000) {
+				choice = '>= 50'
+				filterTitle = ':  Age >= 50'
+				prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .345, .123, 200, 600);
+
+			}
+
+			d3.select('.age-breakdown-title')
+				.transition()
+				.duration(300)
+				.text(filterTitle)
+
+			// Update Israel data
+			loadPrevalenceReduction("prevReduc8","IL_Aug15.csv",choice, colNames, NCIRCLES-44, 200, 600);
+			d3.select('#prevReduc8').select('svg').remove()
+
+			return choice
+		}
+
 
 		// Update the y-axis
 		vis.svg.select(".y-axis").call(vis.yAxis);

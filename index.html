@@ -16,6 +16,52 @@
 
 <div id="fullpage" >
 
+
+<!--Visualizations Overview-->
+	<div class="section demos">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col justify-content-center" id="myPrevReducDemo"></div>
+				<div class="col justify-content-center" id="myHistDemo"></div>
+				<div class="col-4">
+					<form class="form-inline">
+						<div class="form-group">
+							<select class="form-control" id="HistAge">
+								<option value="all-together">All Ages Together</option>
+								<option value="young-and-old"><50 vs >50</option>
+								<option value="all-separate">All Ages Separately</option>
+							</select>
+							<select class="form-control" id="HistScale">
+								<option value="per-capita">Scaled to Population</option>
+								<option value="raw">Raw Count</option>
+							</select>
+						</div>
+					</form>
+
+				</div>
+			</div>
+			<div class="row justify-content-center" id="myScatterDemo"></div>
+			<div class="col-4">
+				<form class="form-inline">
+					<div class="form-group">
+						<select class="form-control" id="ScatterAge">
+							<option value="all-together">All Ages Together</option>
+							<option value="young-and-old"><50 vs >50</option>
+							<option value="all-separate">All Ages Separately</option>
+						</select>
+						<select class="form-control" id="ScatterScale">
+							<option value="per-capita">Scaled to Population</option>
+							<option value="raw">Raw Count</option>
+						</select>
+
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
 <!--Opening Page-->
 	<div class="section title background-vax">
 		<div class="container-fluid">
@@ -93,7 +139,7 @@
 
 			<!--			Title-->
 			<div class="section-title">
-				<h1>NEJM vs. Israeli Data</h1>
+				<h3>To further examine vaccine effectiveness, we consider two data sources</h3>
 			</div>
 
 
@@ -111,7 +157,7 @@
 				<!--			Prevalence Reduction-->
 				<div   class="col ">
 					<div   class="row justify-content-center">
-						<p class="prevReducTitle">Israel Data<br>
+						<p class="prevReducTitle">Israeli Ministry of Health<br>
 					</div>
 					<div   class="row prevReduc">
 						<div id="prevReduc3" ></div>
@@ -121,19 +167,13 @@
 			</div>
 			<!--			Description-->
 			<div class="row justify-content-center">
-				<div class="col-10 slide-text border">
-					<p>We see two differences.<br>
-						1) the overall prevalence of COVID is much higher in the NEJM dataset than in the Isr dataset.<br>
-						That makes sense, since the NEJM dataset is tracking cases in a hopistal setting, whereas the Isr dataset is measuring the entire population.<br>
-
-
-						2) The first dataset also is measuring the prevalence of # positive cases, whereas the second dataset tracks the *severe* cases.
-						TODO: What is their definition of severe?
-
-
-						<!--							3) The vaccine effectiveness itself is actually calculated via the reduction in *odds*<br>-->
-						<!--							APPENDIX: How does our analysis change using odds vs probability? Desmos widget :D-->
-
+				<div class="col-10 slide-text-3">
+					<p> Among these two sources, we see a similar level of vaccine effectiveness though the prevalence is much higher among the NEJM data.
+						This comes down to two factors:
+						<ul>
+							<li>The population NEJM of medicine data is composed of front-line healthcare workers</li>
+							<li>The Israeli data counrs <i>severe</i> cases, where NEJM measures cases regardless of severity</li>
+						</ul>
 					</p>
 
 				</div>
@@ -153,31 +193,31 @@
 		<div class="container-fluid">
 
 			<!--			Title-->
-			<div class="section-title">
-				<h1>Is there waning efficacy? </h1>
-			</div>
+<!--			<div class="section-title">-->
+<!--				<h1>Is there waning efficacy? </h1>-->
+<!--			</div>-->
 
 			<!--			Description-->
 			<div class="row justify-content-center">
 				<div class="col-10">
-					<div class="row justify-content-center slide-text border">
-						<p>We see a reduction between the vaccinated and unvaccinated cohort.<br>
-							But the reduction is mild - only about a 3x reduction.<br>
-							This translates to a ~65% effectiveness. Oh no!<br>
+					<div class="row justify-content-center slide-text">
+						<h2>How effective really are the vaccines?</h2>
+						<p class="effect-text"> Though we do see a reduction between the groups, the effectiveness is in the mid-60s which doesn't seem great.
+							However, when we break down by age we observe a strange phenomenon...
 						</p>
 					</div>
 				</div>
 			</div>
 
-			<!--			Prevalence Reduction-->
-			<div   class="col justify-content-center">
-				<div   class="row justify-content-center">
-					<p>Prevalence Reduction from August 15th Israel data <br>
-				</div>
-				<div   class="row justify-content-center">
-					<div id="prevReduc4"></div>
-				</div>
-			</div>
+<!--			&lt;!&ndash;			Prevalence Reduction&ndash;&gt;-->
+<!--			<div   class="col justify-content-center">-->
+<!--				<div   class="row justify-content-center">-->
+<!--					<p>Prevalence Reduction from August 15th Israel data <br>-->
+<!--				</div>-->
+<!--				<div   class="row justify-content-center">-->
+<!--					<div id="prevReduc4"></div>-->
+<!--				</div>-->
+<!--			</div>-->
 		</div>
 
 	</div>
@@ -200,33 +240,39 @@
 			</div>
 
 			<!--			Description-->
-			<div class="row justify-content-center">
-				<div class="col-10">
-					<div class="row justify-content-center slide-text">
-						<p>When we pay attention to one age group at a time, the situation looks better.<br>
-							The reduction is now stronger - closer to a 10x reduction.<br>
-							This translates to a ~95% effectiveness. Ah :)<br>
-						</p>
-					</div>
-				</div>
-			</div>
+<!--			<div class="row justify-content-center">-->
+<!--				<div class="col-10">-->
+<!--					<div class="row justify-content-center slide-text">-->
+<!--						<p>When we consider the effectiveness by age, we see a jump to above 90% effectiveness!-->
+<!--						</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 
 			<!--			Prevalence Reduction-->
 
 			<div   class="row justify-content-center">
 				<div class="col-5">
 					<div   class="row justify-content-center">
-						<p>Prevalence Reduction from August 15th Israel data 12-49 <br>
+						<p><i>Prevalence Reduction for ages < 50 (Israeli Data)</i><br>
 					</div>
 					<div id="prevReduc5" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 				<div class="col-5">
 					<div   class="row justify-content-center">
-						<p>Prevalence Reduction from August 15th Israel data >= 50 <br>
+						<p><i>Prevalence Reduction for ages 50+ (Israeli Data)</i> <br>
 					</div>
 					<div id="prevReduc6" class = "col-xs-7.5 col-sm-4 "></div>
 				</div>
 			</div>
+
+			<div   class="row justify-content-center slide-text-3">
+				<p> This is a prime example of <b>Simpson's Paradox</b>, a phenomenon in probability and statistics in which a trend appears in several different groups of data but disappears or reverses when these groups are combined.
+					Simpson's Paradox is non-intuitive and can be dangerously misleading in high stakes scenarios.
+					But to further complicate matters, Simpson's paradox does not always appear in data intended to measure the same effect.
+				</p>
+			</div>
+
 
 		</div>
 
@@ -292,55 +338,65 @@
 
 			<!--			Title-->
 			<div class="section-title">
-				<h1> But notice - splitting by age did not cause this problem with the NEJM data </h1>
+				<h3 style="margin-left: 400px; margin-right: 400px;">
+					For example, within the NEJM data, effectiveness remains consistent across age groups! </h3>
 			</div>
 
 			<!--			Description-->
-			<div class="row justify-content-center">
-				<div class="col-10">
-					<div class="row justify-content-center slide-text">
-						<p>What is different between these two scenarios?<br>
-						Splitting by age causes a problem for the Israel data, but not the NEJM data.<br>
-						What causes that difference?<br>
+<!--			<div class="row justify-content-center">-->
+<!--				<div class="col-10">-->
+<!--					<div class="row justify-content-center slide-text">-->
+<!--						<p>What is different between these two scenarios?<br>-->
+<!--						Splitting by age causes a problem for the Israel data, but not the NEJM data.<br>-->
+<!--						What causes that difference?<br>-->
 
-						</p>
-					</div>
-				</div>
-			</div>
+<!--						</p>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 
 			<!--			Prevalence Reduction-->
-			<div   class="row justify-content-center">
+			<div   class="row justify-content-center" style="margin-top: 50px;">
 				<div class="col-5">
-					NEJM >= 12
+					<div id="barChart" class = "col-xs-7.5 col-sm-4 "></div>
+					<div class="row">
+						<g transform="translate(50,20)">
+							<text class="bar-instruction">*Select a bar to see vaccine effectiveness by age group</text>
+						</g>
+					</div>
+				</div>
+				<div class="col-5">
+					<div class="row justify-content-center">
+						Grouping<text class="age-breakdown-title">:  All ages</text>
+					</div>
 					<div id="prevReduc7" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-				<div class="col-5">
-					Isr >= 12
+					<p class="comp-title"> New England Journal of Medicine</p>
 					<div id="prevReduc8" class = "col-xs-7.5 col-sm-4 "></div>
+					<p class="comp-title"> Israeli Data </p>
 				</div>
 			</div>
 
-			<div   class="row justify-content-center">
-				<div class="col-5">
-					NEJM 12-49
-					<div id="prevReduc9" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-				<div class="col-5">
-					Isr 12-49
-					<div id="prevReduc10" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-			</div>
+<!--			<div   class="row justify-content-center">-->
+<!--				<div class="col-5">-->
+<!--					NEJM 12-49-->
+<!--					<div id="prevReduc9" class = "col-xs-7.5 col-sm-4 "></div>-->
+<!--				</div>-->
+<!--				<div class="col-5">-->
+<!--					Isr 12-49-->
+<!--					<div id="prevReduc10" class = "col-xs-7.5 col-sm-4 "></div>-->
+<!--				</div>-->
+<!--			</div>-->
 
-			<div   class="row justify-content-center">
-				<div class="col-5">
-					NEJM >= 50
-					<div id="prevReduc11" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-				<div class="col-5">
-					Isr >= 50
-					<div id="prevReduc12" class = "col-xs-7.5 col-sm-4 "></div>
-				</div>
-			</div>
+<!--			<div   class="row justify-content-center">-->
+<!--				<div class="col-5">-->
+<!--					NEJM >= 50-->
+<!--					<div id="prevReduc11" class = "col-xs-7.5 col-sm-4 "></div>-->
+<!--				</div>-->
+<!--				<div class="col-5">-->
+<!--					Isr >= 50-->
+<!--					<div id="prevReduc12" class = "col-xs-7.5 col-sm-4 "></div>-->
+<!--				</div>-->
+<!--			</div>-->
 
 		</div>
 
@@ -544,7 +600,7 @@
 				<div class="col-4">
 					<div class="row justify-content-center" style="padding-right:10px">
 						<p>Since age is such an important confounding variable, why is it not widely reported in this data?</p>
-						<p>The answer is protection of personally identifying information. Age is one such identifier that, when combined with other bits of personal information, can effectively <b>de-anonymize</b> otherwise anonymous data. This phenomenon is particularly pernicious in the context of highly-sensitive data, like medical records.
+						<p>The answer is protection of personally identifying information. Age is one identifier that, when combined with other bits of personal information, can effectively <b>de-anonymize</b> otherwise anonymous data. This phenomenon is particularly pernicious in the context of highly-sensitive data, like medical records.
 						As such, there is an inherent tradeoff between collecting accurate information and preserving stakeholder privacy.</p>
 						<p>The visualization on the right shows the total population of the Adult Income Dataset, a benchmark dataset in data privacy literature containing data from the 1994 Census Database. Notice how the combination of even just a few features can dramatically reduce the number of individuals who match that description in the data.</p>
 					</div>
@@ -629,7 +685,9 @@
 
 	<script src="js/prevalenceReduction.js"></script>
 	<script src="js/newHist.js"></script>
+	<script src="js/newScatter.js"></script>
 	<script src="js/privacyCircle.js"></script>
+	<script src="js/barchart.js"></script>
 	<script src="js/main.js"></script>
 </div>
 </body>
