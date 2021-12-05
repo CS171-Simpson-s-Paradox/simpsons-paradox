@@ -1,7 +1,7 @@
 
 /* ADD YOUR STYLES HERE */
 body{
-    background-color: white;
+    background-color: skyblue;
     fill: #123456;
 
 }
@@ -57,9 +57,27 @@ text{
     margin-top: 0;
 }
 
+.border {
+    background-color: rgba(255, 255, 255, 0.70);
+    padding: 1vh;
+    border-radius: 10px;
+}
+
+.background-vax {
+    background-image: url("../img/vaccine-tracker-promo.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: solid darkblue;
+}
+
 #header {
     /*background-color: slateblue;*/
     text-align:center;
+    color: white ;
+}
+
+#names {
+    color: white;
 }
 
 
