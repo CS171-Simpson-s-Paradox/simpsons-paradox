@@ -21,14 +21,13 @@ class NewScatter {
 
         vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
 
-        vis.width = 1000 - vis.margin.left - vis.margin.right;
-        vis.height = 700 - vis.margin.top - vis.margin.bottom;
+        vis.width = 1200 - vis.margin.left - vis.margin.right;
+        vis.height = 750 - vis.margin.top - vis.margin.bottom;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-            // .call(d3.drag().on('drag', draggedScatter).on('start', dragStartScatter).on('end', dragEndScatter))
             .call(d3.drag().on('drag', function() {vis.draggedScatter();}).on('start', function() {vis.dragStartScatter();}).on('end', function() {vis.dragEndScatter();}))
             .on("click", function() {vis.controlledRotate();})
             .append("g")
@@ -39,8 +38,8 @@ class NewScatter {
         vis.scale = 20;
         vis.scatter = [];
         vis.scattercolor = [];
-        vis.rotateYAngles = [-Math.PI/2, 0, Math.PI/4];
-        vis.rotateXAngles = [ Math.PI/12, Math.PI/6, Math.PI/6];
+        vis.rotateYAngles = [Math.PI/2, 0, 0];
+        vis.rotateXAngles = [ Math.PI/4, Math.PI/6, Math.PI/2];
         vis.rotatePerspectives = ['Relative Risk of Severe Case by Vax Status', 'Relative Risk of Severe Case by Age', 'Relative Risk of Severe Case by Age and Vax Status'];
         vis.rotateAngleSetting = 0;
         vis.yLine = [];
@@ -73,20 +72,12 @@ class NewScatter {
             .rotateY(vis.startAngle)
             .rotateX(-vis.startAngle)
             .scale(vis.scale);
-        //
-        // vis.yScale3d = d3._3d()
-        //     .shape('LINE_STRIP')
-        //     .origin(vis.origin)
-        //     .rotateY(vis.startAngle)
-        //     .rotateX(-vis.startAngle)
-        //     .scale(vis.scale);
 
         vis.ageScale3d = d3._3d()
             .shape('LINE_STRIP')
             .origin(vis.origin)
             .rotateY(vis.startAngle)
             .rotateX(-vis.startAngle)
-            // .opacity(0.1)
             .scale(vis.scale);
 
         vis.vaxScale3d = d3._3d()
@@ -95,25 +86,14 @@ class NewScatter {
             .rotateY(vis.startAngle)
             .rotateX(-vis.startAngle)
             .scale(vis.scale);
-        //
-        // d3.range(-1, 11, 1).forEach(function(d){
-        //     vis.yLine.push([-vis.j, -d, -vis.j]); });
-        //
 
         d3.range(-25, 25, 5).forEach(function(d){
             vis.ageLine.push([d, 0, -vis.j]); });
 
-
-        // d3.range(-7, 8, 14).forEach(function(d){
-        //     vis.vaxLine.push([-10, -10, d]); });
-        //
         vis.vaxLine = [
-            [-10,0,-10],
-            [-10,0,6]
+            [22,0,-10],
+            [22,0,6]
         ]
-
-        // console.log("#$^%#$");
-        // console.log(vis.yLine);
 
         vis.initScatter();
     }
@@ -142,21 +122,6 @@ class NewScatter {
             .attr('cy', vis.posPointY);
 
         points.exit().remove();
-         //
-         // /* ----------- y-Scale ----------- */
-         //
-         // var yScale = vis.svg.selectAll('path.yScale').data(data[1]);
-         //
-         // yScale
-         //     .enter()
-         //     .append('path')
-         //     .attr('class', '_3d yScale')
-         //     .merge(yScale)
-         //     .attr('stroke', 'black')
-         //     .attr('stroke-width', .5)
-         //     .attr('d', vis.yScale3d.draw);
-         //
-         // yScale.exit().remove();
 
          /* ----------- age-Scale ----------- */
 
@@ -170,12 +135,13 @@ class NewScatter {
              .attr('stroke', 'black')
              .attr('stroke-width', .5)
              .attr('opacity',function(d){
-                 if (vis.rotateAngleSetting==1 || vis.rotateAngleSetting==2){
-                     return 1;
-                 }
-                 else{
-                     return 0;
-                 }
+                 return 0;
+                 // if (vis.rotateAngleSetting==1 || vis.rotateAngleSetting==2){
+                 //     return 1;
+                 // }
+                 // else{
+                 //     return 0;
+                 // }
              })
              .attr('d', vis.ageScale3d.draw);
 
@@ -193,35 +159,17 @@ class NewScatter {
              .attr('stroke', 'black')
              .attr('stroke-width', .5)
              .attr('opacity',function(d){
-                 if (vis.rotateAngleSetting==0 || vis.rotateAngleSetting==2 ){
-                     return 1;
-                 }
-                 else{
-                     return 0;
-                 }
+                 return 0;
+                 // if (vis.rotateAngleSetting==0 || vis.rotateAngleSetting==2 ){
+                 //     return 1;
+                 // }
+                 // else{
+                 //     return 0;
+                 // }
              })
              .attr('d', vis.vaxScale3d.draw);
 
          vaxScale.exit().remove();
-         //
-         // /* ----------- y-Scale Text ----------- */
-         //
-         // var yText = vis.svg.selectAll('text.yText').data(data[1][0]);
-         //
-         // yText
-         //     .enter()
-         //     .append('text')
-         //     .attr('class', '_3d yText')
-         //     .attr('dx', '.3em')
-         //     .merge(yText)
-         //     .each(function(d){
-         //         d.centroid = {x: d.rotated.x, y: d.rotated.y, z: d.rotated.z};
-         //     })
-         //     .attr('x', function(d){ return d.projected.x; })
-         //     .attr('y', function(d){ return d.projected.y; })
-         //     .text(function(d){ return d[1] <= 0 ? d[1] : ''; });
-         //
-         // yText.exit().remove();
 
          /* ----------- age-Scale Text ----------- */
 
@@ -366,6 +314,15 @@ class NewScatter {
         d3.selectAll('h3')
             .text(vis.rotatePerspectives[2])
         ;
+        // d3.selectAll(".scatterDescriptionAge")
+        //     .disabled = (vis.rotateAngleSetting != 1)
+        // ;
+        // d3.selectAll(".scatterDescriptionVax")
+        //     .disabled = (vis.rotateAngleSetting != 0)
+        // ;
+        // d3.selectAll(".scatterDescriptionBoth")
+        //     .disabled = (vis.rotateAngleSetting != 2)
+        // ;
         vis.rotateAngleSetting = 2;
         vis.processDataScatter(0);
     }
@@ -392,10 +349,20 @@ class NewScatter {
         d3.selectAll(".scatterTitle")
             .text(displaytext)
         ;
+        // d3.selectAll(".scatterDescriptionAge")
+        //     .disabled = (vis.rotateAngleSetting != 1)
+        // ;
+        // d3.selectAll(".scatterDescriptionVax")
+        //     .disabled = (vis.rotateAngleSetting != 0)
+        // ;
+        // d3.selectAll(".scatterDescriptionBoth")
+        //     .disabled = (vis.rotateAngleSetting != 2)
+        // ;
+
+
         vis.processDataScatter(1000);
 
         vis.rotateAngleSetting = (vis.rotateAngleSetting+1)%3;
-
 
     }
 
