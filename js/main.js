@@ -38,20 +38,19 @@ loadPrevalenceReduction("prevReduc6Age","IL_Aug15.csv",">= 50", colNames, NCIRCL
 let barChart = new BarChart('barChart');
 let prevReducViz7 = new PrevalenceReduction("prevReduc7", NCIRCLES-44, .36, .1396, 200, 600);
 loadPrevalenceReduction("prevReduc8","IL_Aug15.csv","All ages", colNames, NCIRCLES-44, 200, 600);
-// let prevReducViz9 = new PrevalenceReduction("prevReduc9", NCIRCLES-1, .5, .5,300, 600);
-// loadPrevalenceReduction("prevReduc10","IL_Aug15.csv","<50", colNames, NCIRCLES, 300, 600, false);
-// let prevReducViz11 = new PrevalenceReduction("prevReduc11", NCIRCLES-1, .5, .5, 300, 600);
-// loadPrevalenceReduction("prevReduc12","IL_Aug15.csv",">= 50", colNames, NCIRCLES, 300, 600,false);
 
-//
-// loadHistogram("myHistIsrAug15", "IL_Aug15.csv", rowNames1, colNames);
-// loadHistogram("myHistIsrAug15Age2", "IL_Aug15.csv", rowNames2, colNames);
-// loadHistogram("myHistIsrAug15Age10", "IL_Aug15_ByAge.csv", rowNames3, colNames);
-// loadHistogram("myHistIsrSep2", "IL_Sep2.csv", rowNames1, colNames);
-// loadHistogram("myHistIsrSep2Age2", "IL_Sep2.csv", rowNames2, colNames);
-// loadHistogram("myHistIsrSep2Age10", "IL_Sep2_ByAge.csv", rowNames3, colNames);
-// loadHistogram("myHistIsrSep20Age10", "IL_Sep20_ByAge.csv", rowNames3, moreColNames);
-
+// Pie charts
+let pieChart1 = new PieChart('vaxPie', true)
+let pieChart2 = new PieChart('agePie', false)
+// Update pie charts
+d3.select('#Vacc')
+    .on('change', () => {
+        pieChart1.wrangleData();
+    })
+d3.select('#Age-group')
+    .on('change', () => {
+        pieChart2.wrangleData();
+    })
 
 function loadHistogram(htmlElt, fileName1, fileName2, rowNames1, rowNames2, rowNames3, colNames) {
 
@@ -229,12 +228,12 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles,
                 }
             }
         }
-        // if (popScaled){
-        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
-        // }
-        // else{
-        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES, vals[0]/1000,vals[1]/1000, height, width);
-        // }
+        if (popScaled){
+            let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
+        }
+        else{
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, height, width);
+        }a
     });
 }
 
