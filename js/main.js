@@ -9,7 +9,7 @@ let NCIRCLES = 300
 
 //DEMOS
 // loadPrevalenceReduction("myPrevReducDemo","IL_Aug15.csv","All ages", colNames, false);
-// loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
+loadHistogram("myHistDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 loadScatter("myScatterDemo", "IL_Aug15.csv", "IL_Aug15_ByAge.csv", rowNames1, rowNames2, rowNames3, colNames);
 // let scatterDemo = new NewScatter("myScatterDemo");
 

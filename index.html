@@ -17,49 +17,49 @@
 <div id="fullpage" >
 
 
-<!--Visualizations Overview-->
-	<div class="section demos">
-		<div class="container-fluid">
-			<div class="row justify-content-center">
-				<div class="col justify-content-center" id="myPrevReducDemo"></div>
-				<div class="col justify-content-center" id="myHistDemo"></div>
-				<div class="col-4">
-					<form class="form-inline">
-						<div class="form-group">
-							<select class="form-control" id="HistAge">
-								<option value="all-together">All Ages Together</option>
-								<option value="young-and-old"><50 vs >50</option>
-								<option value="all-separate">All Ages Separately</option>
-							</select>
-							<select class="form-control" id="HistScale">
-								<option value="per-capita">Scaled to Population</option>
-								<option value="raw">Raw Count</option>
-							</select>
-						</div>
-					</form>
+<!--&lt;!&ndash;Visualizations Overview&ndash;&gt;-->
+<!--	<div class="section demos">-->
+<!--		<div class="container-fluid">-->
+<!--			<div class="row justify-content-center">-->
+<!--				<div class="col justify-content-center" id="myPrevReducDemo"></div>-->
+<!--				<div class="col justify-content-center" id="myHistDemo"></div>-->
+<!--				<div class="col-4">-->
+<!--					<form class="form-inline">-->
+<!--						<div class="form-group">-->
+<!--							<select class="form-control" id="HistAge">-->
+<!--								<option value="all-together">All Ages Together</option>-->
+<!--								<option value="young-and-old"><50 vs >50</option>-->
+<!--								<option value="all-separate">All Ages Separately</option>-->
+<!--							</select>-->
+<!--							<select class="form-control" id="HistScale">-->
+<!--								<option value="per-capita">Scaled to Population</option>-->
+<!--								<option value="raw">Raw Count</option>-->
+<!--							</select>-->
+<!--						</div>-->
+<!--					</form>-->
 
-				</div>
-			</div>
-			<div class="row justify-content-center" id="myScatterDemo"></div>
-			<div class="col-4">
-				<form class="form-inline">
-					<div class="form-group">
-						<select class="form-control" id="ScatterAge">
-							<option value="all-together">All Ages Together</option>
-							<option value="young-and-old"><50 vs >50</option>
-							<option value="all-separate">All Ages Separately</option>
-						</select>
-						<select class="form-control" id="ScatterScale">
-							<option value="per-capita">Scaled to Population</option>
-							<option value="raw">Raw Count</option>
-						</select>
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="row justify-content-center" id="myScatterDemo"></div>-->
+<!--			<div class="col-4">-->
+<!--				<form class="form-inline">-->
+<!--					<div class="form-group">-->
+<!--						<select class="form-control" id="ScatterAge">-->
+<!--							<option value="all-together">All Ages Together</option>-->
+<!--							<option value="young-and-old"><50 vs >50</option>-->
+<!--							<option value="all-separate">All Ages Separately</option>-->
+<!--						</select>-->
+<!--						<select class="form-control" id="ScatterScale">-->
+<!--							<option value="per-capita">Scaled to Population</option>-->
+<!--							<option value="raw">Raw Count</option>-->
+<!--						</select>-->
 
-					</div>
-				</form>
+<!--					</div>-->
+<!--				</form>-->
 
-			</div>
-		</div>
-	</div>
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 
 
 <!--Opening Page-->
@@ -74,16 +74,12 @@
 
 			<div class="row justify-content-center slide-text intro border">
 				Encouraging COVID-19 vaccination is one of the most important and urgent public health pursuits in the current day.
-
-				The major mRNA vaccines have undergone rigorous trials to ensure safety and efficacy.
-				However, the process of measuring Vaccine Effectiveness (VE) is somewhat technical, and when important features such as age are not taken into account VE can be misleading.
-				In our project, we will walk through how VE is measured, and how splitting the data by relevant attributes is a necessary component in reaching a sound analysis.
-				This work is intended to help promote clear and accurate messaging regarding waning efficacy.
+				The process of measuring Vaccine Effectiveness (VE) is somewhat technical, and when important features such as age are not taken into account, VE can be misleading.
+				This work is intended to walk through how VE is measured and help promote clear and accurate messaging regarding waning efficacy.
 
 			</div>
 		</div>
 	</div>
-
 
 <!--Intro Page: Vaccine Effectiveness-->
 	<div class="section s2">
@@ -177,7 +173,6 @@
 
 				</div>
 			</div>
-
 
 		</div>
 
@@ -341,19 +336,6 @@
 					For example, within the NEJM data, effectiveness remains consistent across age groups! </h3>
 			</div>
 
-			<!--			Description-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div class="row justify-content-center slide-text">-->
-<!--						<p>What is different between these two scenarios?<br>-->
-<!--						Splitting by age causes a problem for the Israel data, but not the NEJM data.<br>-->
-<!--						What causes that difference?<br>-->
-
-<!--						</p>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-
 			<!--			Prevalence Reduction-->
 			<div   class="row justify-content-center" style="margin-top: 50px;">
 				<div class="col-5 border">
@@ -375,28 +357,27 @@
 				</div>
 			</div>
 
-<!--			<div   class="row justify-content-center">-->
-<!--				<div class="col-5">-->
-<!--					NEJM 12-49-->
-<!--					<div id="prevReduc9" class = "col-xs-7.5 col-sm-4 "></div>-->
-<!--				</div>-->
-<!--				<div class="col-5">-->
-<!--					Isr 12-49-->
-<!--					<div id="prevReduc10" class = "col-xs-7.5 col-sm-4 "></div>-->
-<!--				</div>-->
-<!--			</div>-->
+		</div>
 
-<!--			<div   class="row justify-content-center">-->
-<!--				<div class="col-5">-->
-<!--					NEJM >= 50-->
-<!--					<div id="prevReduc11" class = "col-xs-7.5 col-sm-4 "></div>-->
-<!--				</div>-->
-<!--				<div class="col-5">-->
-<!--					Isr >= 50-->
-<!--					<div id="prevReduc12" class = "col-xs-7.5 col-sm-4 "></div>-->
-<!--				</div>-->
-<!--			</div>-->
+	</div>
 
+	<!--	Scatter-->
+	<div class="section s2">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<h5> (click or drag to change perspective)</h5>
+			</div>
+			<div class="row justify-content-center">
+				<h3 class="scatterTitle"></h3>
+			</div>
+		</div>
+
+		<div class="ageInfo">
+			<a href="https://medium.com/incerto/no-covid-19-is-not-an-old-person-problem-6968f720d153">NO</a>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row justify-content-center" id="myScatterDemo"></div>
 		</div>
 
 	</div>
@@ -404,99 +385,35 @@
 
 
 
+	<!--Histogram-->
+	<div class="section s2">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<h2> Appendix:Histogram of Joint Distribution, With/Without Controlling for Population </h2>
+			</div>
 
+			<div class="col justify-content-center" id="myHistDemo"></div>
+			<div class="col-4">
+				<form class="form-inline">
+					<div class="form-group">
+						<select class="form-control" id="HistAge">
+							<option value="all-separate">All Ages Separately</option>
+							<option value="all-together">All Ages Together</option>
+							<option value="young-and-old"><50 vs >50</option>
 
+						</select>
+						<select class="form-control" id="HistScale">
+							<option value="per-capita">Scaled to Population</option>
+							<option value="raw">Raw Count</option>
+						</select>
+					</div>
+				</form>
 
-
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrAug15' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrAug15Age2' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrAug15Age10' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrSep2' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrSep2Age2' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Histograms!!! </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div id='myHistIsrSep2Age10' class="row justify-content-center">-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
 
 	<div class="section ">
 		<div class="container-fluid">
 			<div class="section-title">
-				<h1>Histograms!!! </h1>
+				<h1>Pie Charts</h1>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-10">
@@ -529,8 +446,11 @@
 
 
 				</div>
+
 			</div>
+
 		</div>
+
 	</div>
 
 <!--	<div class="section ">-->
@@ -547,21 +467,9 @@
 <!--	</div>-->
 
 
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Simpson's Paradox</h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div class="row justify-content-center slide-text">-->
-<!--						<p> Waning efficacy is a real thing: <br>-->
-<!--							https://www.nytimes.com/live/2021/09/17/world/covid-delta-variant-vaccine <br>-->
 
 <!--							However, over the summer, there was a moment where people were reacting prematurely to the idea of waning efficacy. New data suggested vaccine effectiveness dropped from ~95% down to ~66%. However, this is fixed when analyzing the age groups one at a time. <br>-->
 
-
-<!--							This is because age is a confounding variable. Our results change drastically depending on whether we consider this variable, which is an example of Simpson’s paradox: <br>-->
 
 <!--							“Simpson’s paradox, or the Yule–Simpson effect, is a phenomenon in probability and statistics, in which a trend appears in several different groups of data but disappears or reverses when these groups are combined”-->
 
@@ -575,29 +483,31 @@
 
 
 
-
-<!--	<div class="section ">-->
-<!--		<div class="container-fluid">-->
-<!--			<div class="section-title">-->
-<!--				<h1>Confounding Factor: Simpson's paradox </h1>-->
-<!--			</div>-->
-<!--			<div class="row justify-content-center">-->
-<!--				<div class="col-10">-->
-<!--					<div class="row justify-content-center">-->
-<!--						<div class="col-6">-->
-<!--							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>-->
-<!--						</div>-->
-<!--						<div class="col-6"> (Visualizations demonstrating paradox for the data sets)</div>-->
 <!--					</div>-->
 <!--				</div>-->
 <!--			</div>-->
 <!--		</div>-->
 <!--	</div>-->
 
+<!--	<div class="section ">-->
+<!--		<div class="container-fluid">-->
+<!--			<div class="section-title">-->
+<!--				<h1>Histograms!!! </h1>-->
+<!--			</div>-->
+<!--			<div class="row justify-content-center">-->
+<!--				<div class="col-10">-->
+<!--					<div id='myHistIsrAug15Age10' class="row justify-content-center">-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 
 <!--	<div class="section ">-->
 <!--		<div class="container-fluid">-->
 <!--			<div class="section-title">-->
+        
+       
 <!--				<h1>Why does Simpson's Paradox Appear? </h1>-->
 <!--			</div>-->
 <!--			<div class="row justify-content-center">-->
