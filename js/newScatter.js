@@ -22,7 +22,7 @@ class NewScatter {
         vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
 
         vis.width = 750 - vis.margin.left - vis.margin.right;
-        vis.height = 450 - vis.margin.top - vis.margin.bottom;
+        vis.height = 350 - vis.margin.top - vis.margin.bottom;
 
         // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -94,16 +94,16 @@ class NewScatter {
         vis.descriptions = [
             "Like before, we can view the reduction in relative covid risk from the unvaccinated cohort to the vaccinated\n"+
             "Simpson's paradox occurs because a hidden distribution lurks underneath \n"+
-            "The reduction in covid risk is stronger than it seems from this perspective \n"+
+            "The risk reduction offered by a COVID vaccine is stronger than it appears from this perspective \n"+
                 "",
 
 
 
             "The risk of developing a severe case of COVID grows significantly with age. \n" +
             "But for comparison, consider the relative impact of age on mortality risk of the general American population.\n"+
-            // "Heart disease, cancer, and even death in general follow similarly proportional distributions.\n"+
+            "Heart disease, cancer, and death in general follow similarly proportional distributions.\n"+
             // "COVID is not an 'old-person problem'. We should acknowledge such risk disparities exist without writing off the needs of our elderly \n \n" +
-            // "source: https://medium.com/incerto/no-covid-19-is-not-an-old-person-problem-6968f720d153" +
+            "source: https://medium.com/incerto/no-covid-19-is-not-an-old-person-problem-6968f720d153" +
                 "",
 
             "We can partially overcome this confusion in Simpson's Paradox by controlling for both age and vaccination at once.\n" +
@@ -213,7 +213,7 @@ class NewScatter {
                     let prob = areaval/vis.maxval + .005;
                     let u = Math.random();
                     if (u < prob){
-                        vis.scatter.push({x: x, y: d3.randomUniform(0, -10)(), z: z, id: 'point_' + cnt++, color : "red"});
+                        vis.scatter.push({x: x, y: d3.randomUniform(0, -5)(), z: z, id: 'point_' + cnt++, color : "red"});
                     }
                 }
                 xindex++;
@@ -370,6 +370,7 @@ class NewScatter {
         let displaytext = vis.rotatePerspectives[vis.rotateAngleSetting];
         let descriptiontext= vis.descriptions[vis.rotateAngleSetting];
         let descriptionDate= ['August 15', 'September 2', 'September 20', 'November 9'][vis.caseValsIndex];
+        let descriptionImage = ["img/vax.jpeg", "img/risk.jpeg", "img/marginal.jpeg"][vis.rotateAngleSetting];
         d3.selectAll(".scatterTitle")
             .text(displaytext)
         ;
@@ -378,6 +379,9 @@ class NewScatter {
         ;
         d3.selectAll(".scatterDate")
             .text(descriptionDate)
+        ;
+        d3.selectAll("#scatterImage")
+            .attr("src", descriptionImage)
         ;
 
         vis.processDataScatter(time);
@@ -405,50 +409,5 @@ class NewScatter {
         vis.rotateAngleSetting = parseInt(d3.select("#perspective-group").property("value"));
         vis.controlledRotate(transitionTime);
     }
-
-
-    //
-    // selectionChanged(brushRegion) {
-    //     let vis = this;
-    //
-    //     console.log("CHANGING");
-    //     console.log(brushRegion);
-    //     if (brushRegion[1] < 70){
-    //         vis.caseValsIndex == 0;
-    //         console.log('region 1');
-    //     }
-    //     if (brushRegion[1] > 70){
-    //         vis.caseValsIndex == 1;
-    //         console.log('region 2');
-    //     }
-    //     if (brushRegion[1] > 140){
-    //         vis.caseValsIndex == 2;
-    //         console.log('region 3');
-    //     }
-    //     if (brushRegion[1] > 210){
-    //         vis.caseValsIndex == 3;
-    //         console.log('region 4');
-    //     }
-    //     // console.log(vis.data);
-    //
-    //
-    //
-    //     if (vis.caseValsIndex == 0 || vis.caseValsIndex == 1){
-    //         vis.labels = vis.vaxLabels;
-    //     }
-    //     else if (vis.caseValsIndex == 2 || vis.caseValsIndex == 3){
-    //         vis.labels = vis.morevaxLabels;
-    //     }
-    //
-    //
-    //     vis.initScatter(transitionTime);
-    //
-    //     // Filter data accordingly without changing the original data
-    //
-    //     // vis.filteredData = vis.data.filter(d => (d.survey > brushRegion[0]) & (d.survey < brushRegion[1]));
-    //
-    //     // Update the visualization
-    //     // vis.wrangleData();
-    // }
 
 }
