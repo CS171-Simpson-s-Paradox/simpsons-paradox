@@ -21,10 +21,10 @@ class NewHist {
 
         vis.margin = {top: 20, right: 10, bottom: 20, left: 40};
 
-        vis.width = 800 - vis.margin.left - vis.margin.right;
-        vis.height = 350 - vis.margin.top - vis.margin.bottom;
+        vis.width = 1200 - vis.margin.left - vis.margin.right;
+        vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
-        vis.origin = [vis.width / 2 - 50, vis.height - 50];
+        vis.origin = [vis.width / 2 + 50, vis.height - 50];
         vis.scale = 30;
         vis.j = 10;
         vis.alpha = 0;
@@ -82,14 +82,10 @@ class NewHist {
 
         vis.mouseX = vis.mouseX || 0;
         vis.mouseY = vis.mouseY || 0;
-        // console.log(d3.event.x, d3.event.y);
         vis.beta   = (d3.event.x - vis.mx + vis.mouseX) * Math.PI / 230 ;
         vis.alpha  = (d3.event.y - vis.my + vis.mouseY) * Math.PI / 230  * (-1);
         vis.tt = 0;
         vis.updateVis();
-        // vis.processData(vis.cubes3D
-        //     .rotateY(vis.beta + Math.PI)
-        //     .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), 0, vis.ixscale, vis.jzscale);
     }
 
 
@@ -201,8 +197,6 @@ class NewHist {
                 var _cube = vis.makeCube(h, vis.ixscale(i), vis.jzscale(j));
                 _cube.id = 'cube_' + cnt++;
                 _cube.height = h;
-                console.log("HEIGHT");
-                console.log(h);
                 _cube.val = val;
 
                 _cube.age = vis.ageLabels[i];
@@ -223,9 +217,6 @@ class NewHist {
                 vis.cubesData.push(_cube);
             }
         }
-        // vis.initializeAxes();
-
-        // vis.processData(vis.cubes3D(vis.cubesData), 1000);
         vis.processData(vis.cubes3D
             .rotateY(vis.beta + Math.PI)
             .rotateX(vis.alpha - Math.PI+vis.rotateOffset)(vis.cubesData), vis.tt, vis.ixscale, vis.jzscale);
@@ -244,7 +235,7 @@ class NewHist {
             .append('g')
             .attr('class', 'cube')
             .attr('fill', function (d) {
-                console.log(255*vis.colorScale(d.val));
+                // console.log(255*vis.colorScale(d.val));
 
                 return "rgb("+255*vis.colorScale(d.val)+", 0, 0)";
             })
