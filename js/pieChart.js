@@ -12,7 +12,13 @@ class PieChart{
         let vis = this;
 
         //setup SVG
-        vis.margin = {top: 40, right: 60, bottom: 22, left: 100};
+        if (vis.vacc){
+            vis.margin = {top: 40, right: 100, bottom: 22, left: 10};
+        }
+        else{
+            vis.margin = {top: 40, right: 0, bottom: 22, left: 10};
+        }
+
         vis.width = 400 - vis.margin.left - vis.margin.right;
         vis.height = 300 - vis.margin.top - vis.margin.bottom;
 
@@ -21,6 +27,7 @@ class PieChart{
         vis.svg = d3.select("#"+vis.parentElement).append("svg")
             .attr("width", vis.width)
             .attr("height", vis.height)
+            .on("click", function() {vis.scattercontrolledRotate();})
             .append("g")
             .attr("transform", "translate(" + vis.width/2 + "," + (vis.height/2) + ")");
 
@@ -100,6 +107,22 @@ class PieChart{
         vis.u
             .exit()
             .remove()
+
+    }
+
+    scattercontrolledRotate(){
+        let vis = this;
+
+        if (vis.vacc){
+            // changePerspective();
+            d3.select('#perspective-group').property('value', '0');
+            changePerspective();
+        }
+        else{
+            // changePerspective();
+            d3.select('#perspective-group').property('value', '1');
+            changePerspective();
+        }
 
     }
 }
