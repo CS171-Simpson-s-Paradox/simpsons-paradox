@@ -66,7 +66,7 @@ text{
 }
 
 .section {
-    margin: 20px 20px 0 20px;
+    margin: 20px 20px 0px 20px;
 }
 
 .prevReduc {
@@ -142,7 +142,10 @@ text{
     background-image: url("../img/vaccine-tracker-promo.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
-    border: solid darkblue;
+}
+
+.intro {
+    text-shadow: 2px 2px black
 }
 
 #header {
@@ -155,6 +158,9 @@ text{
     color: white;
 }
 
+#title {
+    margin: 0px 0px 0px 0px;
+}
 
 
 html,
@@ -173,5 +179,5 @@ body,
 
     width: 100%;
     position: absolute;
-    top: 10vh;
+    top: 5vh;
 }
