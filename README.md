@@ -5,7 +5,7 @@ URLS:
 
 - Webpage: https://cs171-simpson-s-paradox.github.io/
 
-- Video: 
+- Video: https://youtu.be/EjhYLtvdjkQ
 
 This project webpage was structured using Fullpage.js, the visualizations and story were created by the team. 
 THe 3d scatterplort was created by leveraging the plugin d3-3d.
