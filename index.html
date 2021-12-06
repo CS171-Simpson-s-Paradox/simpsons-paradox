@@ -63,16 +63,16 @@
 
 
 <!--Opening Page-->
-	<div class="section title background-vax">
+	<div class="section background-vax" id="title">
 		<div class="container-fluid">
-			<div class="row justify-content-center">
+			<div class="row justify-content-center intro">
 				<h1 id="header">Simpson's Paradox in Vaccine Effectiveness Estimation</h1>
 			</div>
-			<div class="row justify-content-center">
+			<div class="row justify-content-center intro">
 				<h4 id="names">Ahmed Abukar, Max Cembalest, and Mark Penrod<br><br></h4>
 			</div>
 
-			<div class="row justify-content-center slide-text intro border">
+			<div class="row justify-content-center slide-text border">
 				Encouraging COVID-19 vaccination is one of the most important and urgent public health pursuits in the current day.
 				The process of measuring Vaccine Effectiveness (VE) is somewhat technical, and when important features such as age are not taken into account, VE can be misleading.
 				This work is intended to walk through how VE is measured and help promote clear and accurate messaging regarding waning efficacy.
@@ -82,7 +82,7 @@
 	</div>
 
 <!--Intro Page: Vaccine Effectiveness-->
-	<div class="section s2">
+	<div class="section">
 		<div class="container-fluid">
 
 <!--			Title-->
@@ -150,7 +150,7 @@
 				</div>
 
 				<!--			Prevalence Reduction-->
-				<div   class="col ">
+				<div   class="col">
 					<div   class="row justify-content-center">
 						<p class="prevReducTitle">Israeli Ministry of Health<br>
 					</div>
@@ -167,7 +167,7 @@
 						This comes down to two factors:
 						<ul>
 							<li>The population NEJM of medicine data is composed of front-line healthcare workers</li>
-							<li>The Israeli data counrs <i>severe</i> cases, where NEJM measures cases regardless of severity</li>
+							<li>The Israeli data counts <i>severe</i> cases, where NEJM measures cases regardless of the severity</li>
 						</ul>
 					</p>
 
@@ -262,7 +262,7 @@
 
 			<div   class="row justify-content-center border slide-text-3 ">
 				<p> This is a prime example of <b>Simpson's Paradox</b>, a phenomenon in probability and statistics in which a trend appears in several different groups of data but disappears or reverses when these groups are combined.
-					Simpson's Paradox is non-intuitive and can be dangerously misleading in high stakes scenarios.
+					Simpson's Paradox is non-intuitive and can be dangerously misleading in high-stakes scenarios.
 					But to further complicate matters, Simpson's paradox does not always appear in data intended to measure the same effect.
 				</p>
 			</div>
@@ -408,6 +408,9 @@
 						</select>
 					</div>
 				</form>
+			</div>
+		</div>
+	</div>
 
 
 	<div class="section ">
@@ -535,7 +538,7 @@
 				<div class="col-4">
 					<div class="row justify-content-center border" style="padding-right:10px">
 						<p>Since age is such an important confounding variable, why is it not widely reported in this data?</p>
-						<p>The answer is protection of personally identifying information. Age is one identifier that, when combined with other bits of personal information, can effectively <b>de-anonymize</b> otherwise anonymous data. This phenomenon is particularly pernicious in the context of highly-sensitive data, like medical records.
+						<p>The answer is the protection of personally-identifying information. Age is one identifier that, when combined with other bits of personal information, can effectively <b>de-anonymize</b> otherwise anonymous data. This phenomenon is particularly pernicious in the context of highly-sensitive data, like medical records.
 						As such, there is an inherent tradeoff between collecting accurate information and preserving stakeholder privacy.</p>
 						<p>The visualization on the right shows the total population of the Adult Income Dataset, a benchmark dataset in data privacy literature containing data from the 1994 Census Database. Notice how the combination of even just a few features can dramatically reduce the number of individuals who match that description in the data.</p>
 					</div>
