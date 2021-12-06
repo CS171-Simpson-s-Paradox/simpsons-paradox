@@ -228,12 +228,12 @@ function loadPrevalenceReduction(htmlElt, fileName, rowName, colNames, nCircles,
                 }
             }
         }
-        // if (popScaled){
-        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
-        // }
-        // else{
-        //     let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES, vals[0]/1000,vals[1]/1000, height, width);
-        // }
+        if (popScaled){
+            let myPrevReduc = new PrevalenceReduction(htmlElt, NCIRCLES*popPct-1, unvaxPct*vals[0]/1000,doubleDosePct*vals[1]/1000, height, width);
+        }
+        else{
+            let myPrevReduc = new PrevalenceReduction(htmlElt, nCircles, vals[0]/1000,vals[1]/1000, height, width);
+        }a
     });
 }
 
