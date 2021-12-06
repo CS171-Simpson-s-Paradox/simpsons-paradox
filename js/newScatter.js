@@ -106,11 +106,11 @@ class NewScatter {
             "source: https://medium.com/incerto/no-covid-19-is-not-an-old-person-problem-6968f720d153" +
                 "",
 
-            "We can partially overcome the confusion of Simpson's Paradox by controlling for both age and vaccination at once.\n" +
-            "These are otherwise known as 'marginal distributions' (https://en.wikipedia.org/wiki/Marginal_distribution)\n"+
+            "We can partially overcome this confusion in Simpson's Paradox by controlling for both age and vaccination at once.\n" +
+            "By viewing these <a href='https://en.wikipedia.org/wiki/Marginal_distribution'>marginal distributions</a>\n"+
 
             "This perspective allows us to better assess the vaccine effectiveness\n"+
-                ""
+            ""
         ]
 
         vis.initScatter(2000);

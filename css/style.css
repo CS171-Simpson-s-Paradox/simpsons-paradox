@@ -69,6 +69,19 @@ text{
     margin: 20px 20px 0px 20px;
 }
 
+.drag-instruc {
+    font-weight: lighter;
+}
+
+.scatter-top-line {
+    /*margin-left: 50px;*/
+    /*padding-right: 50px;*/
+}
+
+.scatterDescription {
+    /*padding-right: 50px;*/
+}
+
 .prevReduc {
     margin-left: 75px;
 }
