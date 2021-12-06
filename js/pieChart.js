@@ -32,8 +32,8 @@ class PieChart{
         // create data objects
         // vax vs. not vaxed
         vis.vaxData = {
-            'vax': [{key: 'pos', value: 16}, {key: 'neg', value: 984}],
-            'unvax': [{key: 'pos', value: 1}, {key: 'neg', value: 999}]
+            'vax': [{key: 'pos', value: 1}, {key: 'neg', value: 999}],
+            'unvax': [{key: 'pos', value: 16}, {key: 'neg', value: 984}]
         }
         // age groups
         vis.ageData = {
